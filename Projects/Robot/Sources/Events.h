@@ -34,6 +34,9 @@
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
+#include "LED3_Red.h"
+#include "LEDpin1.h"
+#include "BitIoLdd1.h"
 
 #ifdef __cplusplus
 extern "C" {
