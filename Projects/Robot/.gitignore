@@ -4,5 +4,7 @@
 /Debug
 /.settings
 /Documentation
+# Static_Code must no be under version control
+/Static_Code
 .cwGeneratedFileSetLog
 ProjectInfo.xml
