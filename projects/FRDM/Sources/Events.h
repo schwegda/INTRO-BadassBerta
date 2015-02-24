@@ -43,6 +43,18 @@
 #include "LED_RGB_G.h"
 #include "LEDpin3.h"
 #include "BitIoLdd4.h"
+#include "UTIL1.h"
+#include "WAIT1.h"
+#include "KEY_GR.h"
+#include "keyPin1.h"
+#include "KeyISRpin1.h"
+#include "ExtIntLdd1.h"
+#include "TRG1.h"
+#include "CS1.h"
+#include "KEY_B.h"
+#include "ExtIntLdd2.h"
+#include "KEY_R.h"
+#include "ExtIntLdd3.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -63,6 +75,82 @@ extern "C" {
 /* ===================================================================*/
 void Cpu_OnNMIINT(void);
 
+
+void KEY_GR_OnKeyPressed(byte keys);
+/*
+** ===================================================================
+**     Event       :  KEY_GR_OnKeyPressed (module Events)
+**
+**     Component   :  KEY_GR [Key]
+**     Description :
+**         Event generated at the time a key has been pressed.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         keys            - the key(s) pressed, as bitset (e.g. 1 is
+**                           key 1, 2 is key 2, 4 is key 3, ....)
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+void KEY_GR_OnKeyReleased(byte keys);
+/*
+** ===================================================================
+**     Event       :  KEY_GR_OnKeyReleased (module Events)
+**
+**     Component   :  KEY_GR [Key]
+**     Description :
+**         Event generated after a key has been released.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         keys            - the key(s) pressed, as bitset (e.g. 1 is
+**                           key 1, 2 is key 2, 4 is key 3, ....)
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+void KEY_B_OnKeyPressed(byte keys);
+/*
+** ===================================================================
+**     Event       :  KEY_B_OnKeyPressed (module Events)
+**
+**     Component   :  KEY_B [Key]
+**     Description :
+**         Event generated at the time a key has been pressed.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         keys            - the key(s) pressed, as bitset (e.g. 1 is
+**                           key 1, 2 is key 2, 4 is key 3, ....)
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+void KEY_R_OnInterrupt(void);
+/*
+** ===================================================================
+**     Event       :  KEY_R_OnInterrupt (module Events)
+**
+**     Component   :  KEY_R [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+void KEY_B_OnInterrupt(void);
+/*
+** ===================================================================
+**     Event       :  KEY_B_OnInterrupt (module Events)
+**
+**     Component   :  KEY_B [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
 
 /* END Events */
 

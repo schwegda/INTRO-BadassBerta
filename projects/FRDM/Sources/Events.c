@@ -55,6 +55,101 @@ void Cpu_OnNMIINT(void)
   /* Write your code here ... */
 }
 
+/*
+** ===================================================================
+**     Event       :  KEY_GR_OnKeyPressed (module Events)
+**
+**     Component   :  KEY_GR [Key]
+**     Description :
+**         Event generated at the time a key has been pressed.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         keys            - the key(s) pressed, as bitset (e.g. 1 is
+**                           key 1, 2 is key 2, 4 is key 3, ....)
+**     Returns     : Nothing
+** ===================================================================
+*/
+void KEY_GR_OnKeyPressed(byte keys)
+{
+  /* Write your code here. A bit in 'keys' indicates key pressed ... */
+  LED_RGB_G_Neg();
+}
+
+/*
+** ===================================================================
+**     Event       :  KEY_GR_OnKeyReleased (module Events)
+**
+**     Component   :  KEY_GR [Key]
+**     Description :
+**         Event generated after a key has been released.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         keys            - the key(s) pressed, as bitset (e.g. 1 is
+**                           key 1, 2 is key 2, 4 is key 3, ....)
+**     Returns     : Nothing
+** ===================================================================
+*/
+void KEY_GR_OnKeyReleased(byte keys)
+{
+  /* Write your code here. A bit in 'keys' indicates key released ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  KEY_B_OnKeyPressed (module Events)
+**
+**     Component   :  KEY_B [Key]
+**     Description :
+**         Event generated at the time a key has been pressed.
+**     Parameters  :
+**         NAME            - DESCRIPTION
+**         keys            - the key(s) pressed, as bitset (e.g. 1 is
+**                           key 1, 2 is key 2, 4 is key 3, ....)
+**     Returns     : Nothing
+** ===================================================================
+*/
+void KEY_B_OnKeyPressed(byte keys)
+{
+  /* Write your code here. A bit in 'keys' indicates key pressed ... */
+  LED_RGB_B_Neg();
+}
+
+/*
+** ===================================================================
+**     Event       :  KEY_R_OnInterrupt (module Events)
+**
+**     Component   :  KEY_R [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void KEY_R_OnInterrupt(void)
+{
+  /* Write your code here ... */
+	LED_RGB_R_Neg();
+}
+
+/*
+** ===================================================================
+**     Event       :  KEY_B_OnInterrupt (module Events)
+**
+**     Component   :  KEY_B [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void KEY_B_OnInterrupt(void)
+{
+  /* Write your code here ... */
+	LED_RGB_B_Neg();
+}
+
 /* END Events */
 
 #ifdef __cplusplus
