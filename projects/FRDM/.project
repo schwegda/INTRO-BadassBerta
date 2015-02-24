@@ -32,11 +32,6 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>External_Modules</name>
-			<type>2</type>
-			<locationURI>virtual:/virtual</locationURI>
-		</link>
-		<link>
 			<name>Static_Code/IO_Map/MKL25Z4.h</name>
 			<type>1</type>
 			<location>C:/Freescale/KDS_2.0.0/eclipse/ProcessorExpert/lib/Kinetis/iofiles/MKL25Z4.h</location>
