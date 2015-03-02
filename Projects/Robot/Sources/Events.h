@@ -34,10 +34,10 @@
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
-#include "LED3_Red.h"
+#include "LED2.h"
 #include "LEDpin1.h"
 #include "BitIoLdd1.h"
-#include "LED2_Red.h"
+#include "LED1.h"
 #include "LEDpin2.h"
 #include "BitIoLdd2.h"
 
