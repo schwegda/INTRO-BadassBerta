@@ -30,6 +30,8 @@
 #include "Cpu.h"
 #include "Events.h"
 
+#include "../../Common/LED.h"
+
 #ifdef __cplusplus
 extern "C" {
 #endif 
@@ -72,7 +74,7 @@ void Cpu_OnNMIINT(void)
 void KEY_GR_OnKeyPressed(byte keys)
 {
   /* Write your code here. A bit in 'keys' indicates key pressed ... */
-  LED_3_Neg();
+  LED3_Neg();
 }
 
 /*
@@ -111,7 +113,7 @@ void KEY_GR_OnKeyReleased(byte keys)
 void KEY_B_OnKeyPressed(byte keys)
 {
   /* Write your code here. A bit in 'keys' indicates key pressed ... */
-  LED_2_Neg();
+  LED2_Neg();
 }
 
 /*
@@ -129,7 +131,7 @@ void KEY_B_OnKeyPressed(byte keys)
 void KEY_R_OnInterrupt(void)
 {
   /* Write your code here ... */
-	LED_1_Neg();
+	LED1_Neg();
 }
 
 /*

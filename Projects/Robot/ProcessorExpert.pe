@@ -3,7 +3,7 @@
   <Header>
     <Name>Robot</Name>
     <SavedBy>David Schwegler</SavedBy>
-    <ModificationStamp>10</ModificationStamp>
+    <ModificationStamp>11</ModificationStamp>
     <Date>2015-03-02</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.10.1.RT6_b1444-1070</PEversion>
@@ -10912,87 +10912,6 @@
       </CPUDB_Settings>
     </Cpu_State>
   </CPU>
-  <Configuration>
-    <CompNumb>1</CompNumb>
-    <NodeName>RAM</NodeName>
-    <CnfgEnabled>false</CnfgEnabled>
-    <TargetCPU>0</TargetCPU>
-    <ConfigurationComment lines_count="0" />
-    <BoolList_FpgaConfig>
-      <Count>0</Count>
-    </BoolList_FpgaConfig>
-    <BoolList_BeanConfig>
-      <Count>3</Count>
-      <ItemId0>4</ItemId0>
-      <Value0>true</Value0>
-      <ItemId1>8</ItemId1>
-      <Value1>true</Value1>
-      <ItemId2>14</ItemId2>
-      <Value2>true</Value2>
-    </BoolList_BeanConfig>
-    <BoolList_TaskConfig>
-      <Count>0</Count>
-    </BoolList_TaskConfig>
-    <BoolList_ProgConfig>
-      <Count>0</Count>
-    </BoolList_ProgConfig>
-    <ItemState>
-      <ItemSymbol>Optimizations</ItemSymbol>
-      <ReadOnly>false</ReadOnly>
-      <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
-      <Expanded>true</Expanded>
-    </ItemState>
-    <ItemState>
-      <ItemSymbol>Not_for_MPC512x</ItemSymbol>
-      <ReadOnly>false</ReadOnly>
-      <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
-    </ItemState>
-    <ItemState>
-      <ItemSymbol>O_NoRangeChck</ItemSymbol>
-      <ReadOnly>false</ReadOnly>
-      <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-      <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
-      <Index>1</Index>
-      <Value>false</Value>
-    </ItemState>
-    <ItemState>
-      <ItemSymbol>O_NoEnableTest</ItemSymbol>
-      <ReadOnly>false</ReadOnly>
-      <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-      <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
-      <Index>1</Index>
-      <Value>false</Value>
-    </ItemState>
-    <ItemState>
-      <ItemSymbol>O_NoSpeedTest</ItemSymbol>
-      <ReadOnly>false</ReadOnly>
-      <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-      <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
-      <Index>1</Index>
-      <Value>false</Value>
-    </ItemState>
-    <ItemState>
-      <ItemSymbol>O_NoInitRegReset</ItemSymbol>
-      <ReadOnly>false</ReadOnly>
-      <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-      <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
-      <Index>1</Index>
-      <Value>false</Value>
-    </ItemState>
-    <ItemState>
-      <ItemSymbol>Not_for_MPC5500_MCF</ItemSymbol>
-      <ReadOnly>false</ReadOnly>
-      <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
-    </ItemState>
-    <ItemState>
-      <ItemSymbol>O_PIB_full_Init</ItemSymbol>
-      <ReadOnly>false</ReadOnly>
-      <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-      <ItemWasNeverEnabledInChgScript>true</ItemWasNeverEnabledInChgScript>
-      <Index>1</Index>
-      <Value>false</Value>
-    </ItemState>
-  </Configuration>
   <Configuration>
     <CompNumb>3</CompNumb>
     <NodeName>FLASH</NodeName>
