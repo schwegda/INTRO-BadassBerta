@@ -3,7 +3,7 @@
   <Header>
     <Name>FRDM</Name>
     <SavedBy>David Schwegler</SavedBy>
-    <ModificationStamp>17</ModificationStamp>
+    <ModificationStamp>19</ModificationStamp>
     <Date>2015-03-02</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.10.1.RT6_b1444-1070</PEversion>
@@ -29,7 +29,7 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
-    <ProjectCompNumb>49</ProjectCompNumb>
+    <ProjectCompNumb>52</ProjectCompNumb>
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -4520,7 +4520,7 @@
   </Configuration>
   <Bean>
     <BeanType>LED</BeanType>
-    <Name>LED_RGB_R</Name>
+    <Name>LED1</Name>
     <CompNumb>14</CompNumb>
     <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
@@ -4535,7 +4535,7 @@
         <ItemSymbol>DeviceName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LED_RGB_R</Value>
+        <Value>LED1</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>LEDonWithInitialization</ItemSymbol>
@@ -5303,7 +5303,7 @@
   </Bean>
   <Bean>
     <BeanType>LED</BeanType>
-    <Name>LED_RGB_B</Name>
+    <Name>LED2</Name>
     <CompNumb>17</CompNumb>
     <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
@@ -5318,7 +5318,7 @@
         <ItemSymbol>DeviceName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LED_RGB_B</Value>
+        <Value>LED2</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>LEDonWithInitialization</ItemSymbol>
@@ -6086,7 +6086,7 @@
   </Bean>
   <Bean>
     <BeanType>LED</BeanType>
-    <Name>LED_RGB_G</Name>
+    <Name>LED3</Name>
     <CompNumb>20</CompNumb>
     <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
@@ -6101,7 +6101,7 @@
         <ItemSymbol>DeviceName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LED_RGB_G</Value>
+        <Value>LED3</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>LEDonWithInitialization</ItemSymbol>

@@ -30,10 +30,10 @@
 /* Including needed modules to compile this module/procedure */
 #include "Cpu.h"
 #include "Events.h"
-#include "LED3_Red.h"
+#include "LED2.h"
 #include "LEDpin1.h"
 #include "BitIoLdd1.h"
-#include "LED2_Red.h"
+#include "LED1.h"
 #include "LEDpin2.h"
 #include "BitIoLdd2.h"
 /* Including shared modules, which are used for whole project */
@@ -54,8 +54,8 @@ int main(void)
   /*** End of Processor Expert internal initialization.                    ***/
 
   /* Write your code here */
-  LED3_Red_On();
-  LED2_Red_On();
+  LED2_On();
+  LED1_On();
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/

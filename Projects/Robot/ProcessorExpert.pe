@@ -3,7 +3,7 @@
   <Header>
     <Name>Robot</Name>
     <SavedBy>David Schwegler</SavedBy>
-    <ModificationStamp>5</ModificationStamp>
+    <ModificationStamp>6</ModificationStamp>
     <Date>2015-03-02</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.10.1.RT6_b1444-1070</PEversion>
@@ -21976,7 +21976,7 @@
   </Configuration>
   <Bean>
     <BeanType>LED</BeanType>
-    <Name>LED3_Red</Name>
+    <Name>LED2</Name>
     <CompNumb>8</CompNumb>
     <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
@@ -21991,7 +21991,7 @@
         <ItemSymbol>DeviceName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LED3_Red</Value>
+        <Value>LED2</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>LEDonWithInitialization</ItemSymbol>
@@ -22759,7 +22759,7 @@
   </Bean>
   <Bean>
     <BeanType>LED</BeanType>
-    <Name>LED2_Red</Name>
+    <Name>LED1</Name>
     <CompNumb>14</CompNumb>
     <CompEnabled>true</CompEnabled>
     <GenCodeMode>ALWAYS_WRITE</GenCodeMode>
@@ -22774,7 +22774,7 @@
         <ItemSymbol>DeviceName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>LED2_Red</Value>
+        <Value>LED1</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>LEDonWithInitialization</ItemSymbol>
