@@ -7,14 +7,15 @@
 
 #ifndef LED_H_
 #define LED_H_
+#include "Platform.h"
 
 #if PL_NOF_LEDS >= 1
-  #include "LED_RGB_R.h"
-  #define LED1_On()     LedBit1_ClrVal()
-  #define LED1_Off()    LedBit1_SetVal()
-  #define LED1_Neg()    LedBit1_NegVal()
-  #define LED1_Get()    LedBit1_GetVal()
-  #define LED1_Put(val) LedBit1_PutVal(!val)
+  #include "LED_1.h"
+  #define LED1_On()     LED_1_On()
+  #define LED1_Off()    LED_1_Off()
+  #define LED1_Neg()    LED_1_Neg()
+  #define LED1_Get()    LED_1_GetVal()
+  #define LED1_Put(val) LED_1_PutVal(!val)
   #define LED1_Init()   /* do nothing */
   #define LED1_Deinit() /* do nothing */
 #else
@@ -28,12 +29,12 @@
 #endif
 
 #if PL_NOF_LEDS >= 2
-  #include "LedBit2.h"
-  #define LED2_On()     LedBit2_ClrVal()
-  #define LED2_Off()    LedBit2_SetVal()
-  #define LED2_Neg()    LedBit2_NegVal()
-  #define LED2_Get()    LedBit2_GetVal()
-  #define LED2_Put(val) LedBit2_PutVal(!val)
+  #include "LED_2.h"
+  #define LED2_On()     LED_2_ClrVal()
+  #define LED2_Off()    LED_2_SetVal()
+  #define LED2_Neg()    LED_2_NegVal()
+  #define LED2_Get()    LED_2_GetVal()
+  #define LED2_Put(val) LED_2_PutVal(!val)
   #define LED2_Init()   /* do nothing */
   #define LED2_Deinit() /* do nothing */
 #else
@@ -46,7 +47,24 @@
   #define LED2_Deinit() /* do nothing */
 #endif
 
-
+#if PL_NOF_LEDS >= 3
+  #include "LED_3.h"
+  #define LED3_On()     LED_3_ClrVal()
+  #define LED3_Off()    LED_3_SetVal()
+  #define LED3_Neg()    LED_3_NegVal()
+  #define LED3_Get()    LED_3_GetVal()
+  #define LED3_Put(val) LED_3_PutVal(!val)
+  #define LED3_Init()   /* do nothing */
+  #define LED3_Deinit() /* do nothing */
+#else
+  #define LED3_On()     /* do nothing */
+  #define LED3_Off()    /* do nothing */
+  #define LED3_Neg()    /* do nothing */
+  #define LED3_Get()  0 /* do nothing */
+  #define LED3_Put(val) /* do nothing */
+  #define LED3_Init()   /* do nothing */
+  #define LED3_Deinit() /* do nothing */
+#endif
 
 void LED_Init(void);
 void LED_Deinit(void);

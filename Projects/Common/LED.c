@@ -5,11 +5,14 @@
  *      Author: Alexander
  */
 
+#include "LED.h"
+
 void LED_Init(void) {
   /* all LED's off by default */
-  LED1_Off();
-  LED2_Off();
-  LED3_Off();
+
+	LED1_Off();
+	LED2_Off();
+	LED3_Off();
 }
 
 void LED_Deinit(void) {
