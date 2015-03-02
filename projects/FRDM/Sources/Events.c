@@ -72,7 +72,7 @@ void Cpu_OnNMIINT(void)
 void KEY_GR_OnKeyPressed(byte keys)
 {
   /* Write your code here. A bit in 'keys' indicates key pressed ... */
-  LED_RGB_G_Neg();
+  LED_3_Neg();
 }
 
 /*
@@ -111,7 +111,7 @@ void KEY_GR_OnKeyReleased(byte keys)
 void KEY_B_OnKeyPressed(byte keys)
 {
   /* Write your code here. A bit in 'keys' indicates key pressed ... */
-  LED_RGB_B_Neg();
+  LED_2_Neg();
 }
 
 /*
@@ -129,7 +129,7 @@ void KEY_B_OnKeyPressed(byte keys)
 void KEY_R_OnInterrupt(void)
 {
   /* Write your code here ... */
-	LED_RGB_R_Neg();
+	LED_1_Neg();
 }
 
 /*
@@ -147,7 +147,7 @@ void KEY_R_OnInterrupt(void)
 void KEY_B_OnInterrupt(void)
 {
   /* Write your code here ... */
-	LED_RGB_B_Neg();
+	LED_2_Neg();
 }
 
 /* END Events */
