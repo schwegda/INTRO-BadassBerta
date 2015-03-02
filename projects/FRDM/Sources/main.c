@@ -69,6 +69,13 @@ int main(void)
 
 	/* Write your code here */
 	/* For example: for(;;) { } */
+	LED_RGB_R_Init();
+	LED_RGB_B_Init();
+	LED_RGB_G_Init();
+	for(;;)
+	{
+
+	}
 
 	/*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
