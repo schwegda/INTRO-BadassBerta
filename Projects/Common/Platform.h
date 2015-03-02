@@ -18,7 +18,8 @@
 	#error "This is not BadassBerta!!"
 #endif
 
-
+void PL_Init(void);
+void PL_Deinit(void);
 
 
 #endif /* PLATFORM_H_ */
