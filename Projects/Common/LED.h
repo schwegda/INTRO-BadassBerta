@@ -9,7 +9,7 @@
 #define LED_H_
 #include "Platform.h"
 
-/* On FRDM Board :
+/*! On FRDM Board :
  * 		- LED1 -> RGB Red
  * 		- LED2 -> RGB Blue
  * 		- LED3 -> RGB Green
