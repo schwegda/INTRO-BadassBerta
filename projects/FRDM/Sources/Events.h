@@ -56,6 +56,7 @@
 #include "CS1.h"
 #include "KEY_B.h"
 #include "ExtIntLdd2.h"
+#include "WAIT2.h"
 #include "KEY_R.h"
 #include "ExtIntLdd3.h"
 
