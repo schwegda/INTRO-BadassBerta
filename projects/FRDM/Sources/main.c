@@ -61,6 +61,7 @@
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
 #include "../../Common/Platform.h"
+#include "../../Common/LED.h"
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
@@ -77,7 +78,15 @@ int main(void)
 	PL_Deinit();
 	for(;;)
 	{
-
+		LED1_On();
+		WAIT2_Waitms(500);
+		LED1_Off();
+		LED2_On();
+		WAIT2_Waitms(500);
+		LED2_Off();
+		LED3_On();
+		WAIT2_Waitms(500);
+		LED3_Off();
 	}
 
 	/*** Don't write any code pass this line, or it will be deleted during code generation. ***/

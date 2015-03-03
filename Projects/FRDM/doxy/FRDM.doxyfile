@@ -1964,6 +1964,7 @@ INCLUDE_PATH =
 # This tag requires that the tag ENABLE_PREPROCESSING is set to YES.
 
 INCLUDE_FILE_PATTERNS = 
+PREDEFINED = PL_BOARD_IS_FRDM
 
 # The PREDEFINED tag can be used to specify one or more macro names that are
 # defined before the preprocessor is started (similar to the -D option of e.g.
