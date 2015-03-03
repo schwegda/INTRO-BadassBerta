@@ -6,5 +6,8 @@
 /Documentation
 # Static_Code must no be under version control
 /Static_Code
+# doxy/html must no be under version control because it's generated code
+/doxy/html
+
 .cwGeneratedFileSetLog
 ProjectInfo.xml
