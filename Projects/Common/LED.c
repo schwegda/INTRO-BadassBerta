@@ -7,6 +7,9 @@
 
 #include "LED.h"
 
+/*!
+ * \brief Initialize all LED.
+ */
 void LED_Init(void) {
   /* all LED's off by default */
 
