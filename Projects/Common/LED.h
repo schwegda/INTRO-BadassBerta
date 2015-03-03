@@ -1,10 +1,35 @@
-/*
- * LED.h
- *
- *  Created on: 02.03.2015
- *      Author: Alexander
- */
-
+/* ###################################################################
+**     Filename    : LED.h
+**     Project     : Robot
+**     Processor   : MK22FX512VLQ12
+**     Version     : Driver 01.0
+**     Compiler    : GNU C Compiler
+**     Date/Time   : 2015-03-1, 08:21, # CodeGen: 0
+**     Abstract    :
+**         LED Interface.
+**         This module Interface that make possible to use Code on Robot and FRDM Board
+**     Settings    :
+**     Contents    :
+**
+**
+** ###################################################################*/
+/*!
+** @file LED.h
+** @version 01.00
+** @brief
+**  	LED Interface.
+**      This module Interface that make possible to use Code on Robot and FRDM Board.
+** @detail
+** 		On FRDM Board:<BR>
+**		LED1 -> RGB Red<BR>
+** 		LED2 -> RGB Blue<BR>
+**  	LED3 -> RGB Green
+*/
+/*!
+**  @addtogroup LED_module LED module documentation
+**  @{
+*/
+/* MODULE main */
 #ifndef LED_H_
 #define LED_H_
 #include "Platform.h"
