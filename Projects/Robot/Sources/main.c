@@ -38,13 +38,15 @@
 #include "LED_1.h"
 #include "LEDpin2.h"
 #include "BitIoLdd2.h"
+#include "WAIT1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
-
+#include "../../Common/LED.h"
+#include "../../Common/Platform.h"
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
@@ -56,10 +58,17 @@ int main(void)
   /*** End of Processor Expert internal initialization.                    ***/
 
   /* Write your code here */
-  LED_2_On();
-  LED_1_On();
-
-
+  PL_Init();
+  while(1)
+  {
+	  WAIT1_Waitms(250);
+	  LED1_On();
+	  LED2_On();
+	  WAIT1_Waitms(250);
+	  LED1_Off();
+	  LED2_Off();
+  }
+  PL_Deinit();
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
