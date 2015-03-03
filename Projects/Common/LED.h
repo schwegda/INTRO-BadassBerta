@@ -1,7 +1,7 @@
 /* ###################################################################
 **     Filename    : LED.h
-**     Project     : Robot
-**     Processor   : MK22FX512VLQ12
+**     Project     : INTRO
+**     Processor   : MK22FX512VLQ12 / MKL25Z128VLK4
 **     Version     : Driver 01.0
 **     Compiler    : GNU C Compiler
 **     Date/Time   : 2015-03-1, 08:21, # CodeGen: 0
@@ -29,16 +29,11 @@
 **  @addtogroup LED_module LED module documentation
 **  @{
 */
-/* MODULE main */
+/* MODULE Led */
+
 #ifndef LED_H_
 #define LED_H_
 #include "Platform.h"
-
-/*! On FRDM Board :
- * 		- LED1 -> RGB Red
- * 		- LED2 -> RGB Blue
- * 		- LED3 -> RGB Green
- */
 
 #if PL_NOF_LEDS >= 1
   #include "LED_1.h"
@@ -101,3 +96,6 @@ void LED_Init(void);
 void LED_Deinit(void);
 
 #endif /* LED_H_ */
+/*@}
+ */
+ */
