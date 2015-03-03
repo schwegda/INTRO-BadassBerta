@@ -6,5 +6,7 @@
 /Documentation
 # Added by thschmid
 /Static_Code
+# doxy/html must no be under version control because it's generated code
+/doxy/html
 .cwGeneratedFileSetLog
 ProjectInfo.xml
