@@ -61,7 +61,7 @@ int main(void)
   PL_Init();
   while(1)
   {
-	  WAIT1_Waitms(250);
+	  WAIT1_Waitms(251);
 	  LED1_On();
 	  LED2_On();
 	  WAIT1_Waitms(250);
