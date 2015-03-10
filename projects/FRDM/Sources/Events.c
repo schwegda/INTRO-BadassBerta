@@ -79,25 +79,6 @@ void KEY_GR_OnKeyPressed(byte keys)
 
 /*
 ** ===================================================================
-**     Event       :  KEY_GR_OnKeyReleased (module Events)
-**
-**     Component   :  KEY_GR [Key]
-**     Description :
-**         Event generated after a key has been released.
-**     Parameters  :
-**         NAME            - DESCRIPTION
-**         keys            - the key(s) pressed, as bitset (e.g. 1 is
-**                           key 1, 2 is key 2, 4 is key 3, ....)
-**     Returns     : Nothing
-** ===================================================================
-*/
-void KEY_GR_OnKeyReleased(byte keys)
-{
-  /* Write your code here. A bit in 'keys' indicates key released ... */
-}
-
-/*
-** ===================================================================
 **     Event       :  KEY_B_OnKeyPressed (module Events)
 **
 **     Component   :  KEY_B [Key]

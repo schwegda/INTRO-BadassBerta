@@ -41,18 +41,10 @@
 #include "LED_3.h"
 #include "LEDpin3.h"
 #include "BitIoLdd4.h"
-#include "UTIL1.h"
 #include "WAIT1.h"
-#include "KEY_GR.h"
-#include "keyPin1.h"
-#include "KeyISRpin1.h"
-#include "ExtIntLdd1.h"
-#include "TRG1.h"
 #include "CS1.h"
 #include "KEY_B.h"
 #include "ExtIntLdd2.h"
-#include "WAIT2.h"
-#include "CS2.h"
 #include "HF1.h"
 #include "KEY_R.h"
 #include "ExtIntLdd3.h"
@@ -62,8 +54,7 @@
 #include "PE_Const.h"
 #include "IO_Map.h"
 /* User includes (#include below this line is not maintained by Processor Expert) */
-#include "../../Common/Platform.h"
-#include "../../Common/LED.h"
+#include "Application.h"
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
@@ -76,20 +67,10 @@ int main(void)
 
 	/* Write your code here */
 	/* For example: for(;;) { } */
-	PL_Init();
-	PL_Deinit();
-	for(;;)
-	{
-		LED1_On();
-		WAIT2_Waitms(500);
-		LED1_Off();
-		LED2_On();
-		WAIT2_Waitms(500);
-		LED2_Off();
-		LED3_On();
-		WAIT2_Waitms(500);
-		LED3_Off();
-	}
+
+	initApplication();
+	mainApplication();
+	deinitApplication();
 
 	/*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
