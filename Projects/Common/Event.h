@@ -15,7 +15,7 @@
 
 typedef enum EVNT_Handle {
   EVNT_INIT,            /*!< System Initialization Event */
-  /*!< \todo Your events here */
+  EVENT_STARTUP,		/*!< System Startup Event*/
   EVNT_NOF_EVENTS       /*!< Must be last one! */
 } EVNT_Handle;
 

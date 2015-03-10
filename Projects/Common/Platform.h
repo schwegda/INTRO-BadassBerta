@@ -13,7 +13,8 @@
 #define PLATFORM_H_
 
 #define PL_HAS_LED (1)		/*!<Set to 0 if there are no LED's>*/
-#define PL_HAS_EVENTS (1)	/*!<Set to 0 if there are no LED's>*/
+#define PL_HAS_EVENTS (1)	/*!<Set to 0 if there are no Events>*/
+#define PL_HAS_TIMER (1)	/*!<Set to 0 if there are no Timers used>*/
 
 #ifdef PL_BOARD_IS_FRDM
 	#define PL_NOF_LEDS (3)

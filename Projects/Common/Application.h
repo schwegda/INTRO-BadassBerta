@@ -19,9 +19,8 @@
 
 
 void initApplication();
-void mainApplication();
+void runApplication();
 void deinitApplication();
-
 
 
 #endif /* APPLICATION_H_ */
