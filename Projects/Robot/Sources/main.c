@@ -39,7 +39,10 @@
 #include "LEDpin2.h"
 #include "BitIoLdd2.h"
 #include "WAIT1.h"
-#include "CriticalSection_1.h"
+#include "CS1.h"
+#include "TI1.h"
+#include "TimerIntLdd1.h"
+#include "TU1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -72,11 +75,11 @@ int main(void)
   }
 
   // Example of a critical section
-  CriticalSection_1_CriticalVariable()
+  CS1_CriticalVariable()
 
-  CriticalSection_1_EnterCritical();
+  CS1_EnterCritical();
   // Critical code
-  CriticalSection_1_ExitCritical();
+  CS1_ExitCritical();
 
 
 
