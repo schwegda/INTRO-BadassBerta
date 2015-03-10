@@ -39,6 +39,7 @@
 #include "LEDpin2.h"
 #include "BitIoLdd2.h"
 #include "WAIT1.h"
+#include "CriticalSection_1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -59,6 +60,7 @@ int main(void)
 
   /* Write your code here */
   PL_Init();
+
   while(1)
   {
 	  WAIT1_Waitms(251);
@@ -68,6 +70,19 @@ int main(void)
 	  LED1_Off();
 	  LED2_Off();
   }
+
+  // Example of a critical section
+  CriticalSection_1_CriticalVariable()
+
+  CriticalSection_1_EnterCritical();
+  // Critical code
+  CriticalSection_1_ExitCritical();
+
+
+
+
+
+
   PL_Deinit();
 
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
