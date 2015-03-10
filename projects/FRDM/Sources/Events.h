@@ -58,6 +58,7 @@
 #include "ExtIntLdd2.h"
 #include "WAIT2.h"
 #include "CS2.h"
+#include "HF1.h"
 #include "KEY_R.h"
 #include "ExtIntLdd3.h"
 
