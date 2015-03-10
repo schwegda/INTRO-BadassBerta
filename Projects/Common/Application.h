@@ -17,7 +17,6 @@
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
 
-
 void initApplication();
 void runApplication();
 void deinitApplication();

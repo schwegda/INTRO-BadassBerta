@@ -151,7 +151,9 @@ void KEY_B_OnInterrupt(void)
 void TI1_OnInterrupt(void)
 {
   /* Write your code here ... */
+#if PL_HAS_TIMER
 	TMR_OnInterrupt();
+#endif
 }
 
 /* END Events */

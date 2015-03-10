@@ -72,7 +72,7 @@ int main(void)
 	/* For example: for(;;) { } */
 
 	initApplication();
-	runApplication();
+	runApplication();		/*!<usually never runs out of this Method>*/
 	deinitApplication();
 
 	/*** Don't write any code pass this line, or it will be deleted during code generation. ***/

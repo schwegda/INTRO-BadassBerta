@@ -34,8 +34,6 @@ void EVNT_ClearEvent(EVNT_Handle event) {
 }
 
 bool EVNT_EventIsSet(EVNT_Handle event) {
-  bool res;
-
   return GET_EVENT(event);
 }
 
@@ -85,5 +83,4 @@ void EVNT_Deinit(void) {
 }
 
 #endif /* PL_HAS_EVENTS */
-
 

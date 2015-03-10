@@ -24,7 +24,10 @@
 #include "WAIT1.h"
 #include "Event.h"
 
-
+/*!
+ * \brief Application event handler
+ * \param event Event to be handled
+ */
 static void APP_HandleEvents(EVNT_Handle event)
 {
 	switch(event){
@@ -33,11 +36,17 @@ static void APP_HandleEvents(EVNT_Handle event)
 		WAIT1_Waitms(50);
 		LED1_Off();
 		break;
+	case EVENT_LED_HEARTBEAT:
+		LED1_Neg();
+		break;
 	default:
 		break;
 	}
 }
 
+/*!
+ * \brief Application main 'task'.
+ */
 static void APP_Task(void)
 {
 	EVNT_SetEvent(EVENT_STARTUP);	/* set startup event */
@@ -50,11 +59,12 @@ static void APP_Task(void)
 void initApplication()
 {
 	PL_Init();
-	APP_Task();
 }
 
 void runApplication()
 {
+	APP_Task(); 	/* never runs further */
+
 #if 0
 	for(;;)
 		{
