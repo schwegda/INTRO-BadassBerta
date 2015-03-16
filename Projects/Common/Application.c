@@ -24,6 +24,7 @@
 #include "WAIT1.h"
 #include "Event.h"
 #include "Keys.h"
+#include "Buzzer.h"
 
 /*!
  * \brief Application event handler
@@ -41,10 +42,17 @@ static void APP_HandleEvents(EVNT_Handle event)
 		LED1_Neg();
 		break;
 	case EVNT_SW1_PRESSED:
-		LED1_On();
+		LED1_Neg();
 		break;
 	case EVNT_SW2_PRESSED:
-		LED2_On();
+		LED2_Neg();
+		break;
+	case EVNT_SW3_PRESSED:
+		LED3_Neg();
+		break;
+	case EVNT_SW4_PRESSED:
+		LED3_Neg();
+		Buzzer_Negate();
 		break;
 	default:
 		break;
