@@ -29,6 +29,8 @@
 
 #include "Cpu.h"
 #include "Events.h"
+#include "../../Common/Platform.h"
+#include "../../Common/Timer.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -70,6 +72,26 @@ void Cpu_OnNMIINT(void)
 ** ===================================================================
 */
 void TI1_OnInterrupt(void)
+{
+  /* Write your code here ... */
+	#if PL_HAS_TIMER
+		TMR_OnInterrupt();
+	#endif
+}
+
+/*
+** ===================================================================
+**     Event       :  SW1_OnInterrupt (module Events)
+**
+**     Component   :  SW1 [ExtInt]
+**     Description :
+**         This event is called when an active signal edge/level has
+**         occurred.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void SW1_OnInterrupt(void)
 {
   /* Write your code here ... */
 }

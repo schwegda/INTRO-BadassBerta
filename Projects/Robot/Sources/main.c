@@ -45,6 +45,8 @@
 #include "TU1.h"
 #include "Buzzer_PE.h"
 #include "BitIoLdd3.h"
+#include "SW1.h"
+#include "ExtIntLdd1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -54,6 +56,7 @@
 #include "../../Common/LED.h"
 #include "../../Common/Platform.h"
 #include "../../Common/Application.h"
+#include "../../Common/Event.h"
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
