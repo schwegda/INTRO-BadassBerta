@@ -22,7 +22,11 @@
   #define Buzzer_Init()
 
 #else
-
+  #define Buzzer_On() 		/* do nothing */
+  #define Buzzer_Off() 		/* do nothing */
+  #define Buzzer_GetValue() /* do nothing */
+  #define Buzzer_Negate() 	/* do nothing */
+  #define Buzzer_Init() 	/* do nothing */
 #endif
 
 #endif /* BUZZER_H_ */
