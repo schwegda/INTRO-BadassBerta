@@ -23,6 +23,7 @@
 #include "Application.h"
 #include "WAIT1.h"
 #include "Event.h"
+#include "Buzzer.h"
 
 /*!
  * \brief Application event handler
@@ -35,6 +36,12 @@ static void APP_HandleEvents(EVNT_Handle event)
 		LED1_On();
 		WAIT1_Waitms(50);
 		LED1_Off();
+		for(int i=0;i<30;i++)
+		{
+			Buzzer_Negate();
+			WAIT1_Waitms(5);
+		}
+
 		break;
 	case EVENT_LED_HEARTBEAT:
 		LED1_Neg();
