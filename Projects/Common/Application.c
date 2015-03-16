@@ -37,24 +37,63 @@ static void APP_HandleEvents(EVNT_Handle event)
 		LED1_On();
 		WAIT1_Waitms(50);
 		LED1_Off();
+		for(int i=0;i<30;i++)
+		{
+			Buzzer_Negate();
+			WAIT1_Waitms(5);
+		}
 		break;
 	case EVNT_LED_HEARTBEAT:
 		LED1_Neg();
 		break;
-	case EVNT_SW1_PRESSED:
-		LED1_Neg();
-		break;
-	case EVNT_SW2_PRESSED:
-		LED2_Neg();
-		break;
-	case EVNT_SW3_PRESSED:
-		LED3_Neg();
-		break;
-	case EVNT_SW4_PRESSED:
-		LED3_Neg();
-		Buzzer_Negate();
-		break;
-	default:
+
+		#if PL_NOF_KEYS >= 1
+			case EVNT_SW1_PRESSED:
+				LED1_Neg();
+				Buzzer_Negate();
+			  //CLS1_SendStr("SW1\r\n", CLS1_GetStdio()->stdOut);
+			  break;
+		#endif
+
+		#if PL_NOF_KEYS >= 2
+			case EVNT_SW2_PRESSED:
+				LED2_Neg();
+			  //CLS1_SendStr("SW2\r\n", CLS1_GetStdio()->stdOut);
+			  break;
+		#endif
+
+		#if PL_NOF_KEYS >= 3
+			case EVNT_SW3_PRESSED:
+				LED3_Neg();
+			  //CLS1_SendStr("SW3\r\n", CLS1_GetStdio()->stdOut);
+			  break;
+		#endif
+
+		#if PL_NOF_KEYS >= 4
+			case EVNT_SW4_PRESSED:
+			  //CLS1_SendStr("SW4\r\n", CLS1_GetStdio()->stdOut);
+			  break;
+		#endif
+
+		#if PL_NOF_KEYS >= 5
+			case EVNT_SW5_PRESSED:
+			  //CLS1_SendStr("SW5\r\n", CLS1_GetStdio()->stdOut);
+			  break;
+		#endif
+
+		#if PL_NOF_KEYS >= 6
+			case EVNT_SW6_PRESSED:
+			  //CLS1_SendStr("SW6\r\n", CLS1_GetStdio()->stdOut);
+			  break;
+		#endif
+
+		#if PL_NOF_KEYS >= 7
+			case EVNT_SW7_PRESSED:
+			  //CLS1_SendStr("SW7\r\n", CLS1_GetStdio()->stdOut);
+			  break;
+		#endif
+
+		default:
 		break;
 	}
 }

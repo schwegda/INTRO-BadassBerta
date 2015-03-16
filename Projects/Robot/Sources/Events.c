@@ -31,6 +31,7 @@
 #include "Events.h"
 #include "../../Common/Platform.h"
 #include "../../Common/Timer.h"
+#include "../../Common/Keys.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -93,7 +94,20 @@ void TI1_OnInterrupt(void)
 */
 void SW1_OnInterrupt(void)
 {
-  /* Write your code here ... */
+	/*! Damit Heartbeat nicht von diesem Interrupt unterbrochen wird*/
+	/*! \todo Abrage ob Pin tatsächlich auf 1 ist nicht mehr machen? */
+
+	/*
+	if (PORT_PDD_GetPinInterruptFlag(PORTA_BASE_PTR, ExtIntLdd1_PIN_INDEX))
+	  {
+	     PORT_PDD_ClearPinInterruptFlag(PORTA_BASE_PTR, ExtIntLdd1_PIN_INDEX);
+	     KEY_OnInterrupt(KEY_BTN1);
+	  }
+	  */
+
+	if(SW1_GetVal() == 0){
+		  KEY_OnInterrupt(KEY_BTN1);
+	  }
 }
 
 /* END Events */

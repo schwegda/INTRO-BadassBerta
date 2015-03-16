@@ -68,6 +68,8 @@
 #endif
   #endif
 #elif PL_IS_ROBO
+  #define PL_HAS_BUZZER (1)
+  	  /*!< We have one Buzzer on the Robot Baseboard */
   #define PL_NOF_LEDS       (2)
      /*!< We have up to 2 LED's on the robo board */
   #define PL_NOF_KEYS       (1)
