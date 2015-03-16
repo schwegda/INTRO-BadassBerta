@@ -47,8 +47,6 @@ void PL_Init(void)
 #endif
 #if PL_HAS_BUZZER
 #endif
-
-
 }
 
 void PL_Deinit(void)

@@ -30,7 +30,6 @@
 #include "Cpu.h"
 #include "Events.h"
 
-#include "../../Common/LED.h"
 #include "../../Common/Timer.h"
 #include "../../Common/Keys.h"
 
