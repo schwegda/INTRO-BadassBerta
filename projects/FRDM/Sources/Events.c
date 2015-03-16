@@ -59,81 +59,7 @@ void Cpu_OnNMIINT(void)
   /* Write your code here ... */
 }
 
-/*
-** ===================================================================
-**     Event       :  KEY_GR_OnKeyPressed (module Events)
-**
-**     Component   :  KEY_GR [Key]
-**     Description :
-**         Event generated at the time a key has been pressed.
-**     Parameters  :
-**         NAME            - DESCRIPTION
-**         keys            - the key(s) pressed, as bitset (e.g. 1 is
-**                           key 1, 2 is key 2, 4 is key 3, ....)
-**     Returns     : Nothing
-** ===================================================================
-*/
-void KEY_GR_OnKeyPressed(byte keys)
-{
-  /* Write your code here. A bit in 'keys' indicates key pressed ... */
-  LED3_Neg();
-}
 
-/*
-** ===================================================================
-**     Event       :  KEY_B_OnKeyPressed (module Events)
-**
-**     Component   :  KEY_B [Key]
-**     Description :
-**         Event generated at the time a key has been pressed.
-**     Parameters  :
-**         NAME            - DESCRIPTION
-**         keys            - the key(s) pressed, as bitset (e.g. 1 is
-**                           key 1, 2 is key 2, 4 is key 3, ....)
-**     Returns     : Nothing
-** ===================================================================
-*/
-void KEY_B_OnKeyPressed(byte keys)
-{
-  /* Write your code here. A bit in 'keys' indicates key pressed ... */
-  LED2_Neg();
-}
-
-/*
-** ===================================================================
-**     Event       :  KEY_R_OnInterrupt (module Events)
-**
-**     Component   :  KEY_R [ExtInt]
-**     Description :
-**         This event is called when an active signal edge/level has
-**         occurred.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-void KEY_R_OnInterrupt(void)
-{
-  /* Write your code here ... */
-	LED1_Neg();
-}
-
-/*
-** ===================================================================
-**     Event       :  KEY_B_OnInterrupt (module Events)
-**
-**     Component   :  KEY_B [ExtInt]
-**     Description :
-**         This event is called when an active signal edge/level has
-**         occurred.
-**     Parameters  : None
-**     Returns     : Nothing
-** ===================================================================
-*/
-void KEY_B_OnInterrupt(void)
-{
-  /* Write your code here ... */
-	LED_2_Neg();
-}
 
 /*
 ** ===================================================================
@@ -223,7 +149,9 @@ void SW3_OnInterrupt(void)
 */
 void SW2_OnInterrupt(void)
 {
-  /* Write your code here ... */
+	if(SW2_GetVal() == 0){
+		  KEY_OnInterrupt(KEY_BTN2);
+	  }
 }
 
 /*
@@ -240,7 +168,9 @@ void SW2_OnInterrupt(void)
 */
 void SW1_OnInterrupt(void)
 {
-  /* Write your code here ... */
+  if(SW1_GetVal() == 0){
+	  KEY_OnInterrupt(KEY_BTN1);
+  }
 }
 
 /* END Events */

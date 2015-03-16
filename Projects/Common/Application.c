@@ -23,6 +23,7 @@
 #include "Application.h"
 #include "WAIT1.h"
 #include "Event.h"
+#include "Keys.h"
 
 /*!
  * \brief Application event handler
@@ -31,13 +32,19 @@
 static void APP_HandleEvents(EVNT_Handle event)
 {
 	switch(event){
-	case EVENT_STARTUP:
+	case EVNT_STARTUP:
 		LED1_On();
 		WAIT1_Waitms(50);
 		LED1_Off();
 		break;
-	case EVENT_LED_HEARTBEAT:
+	case EVNT_LED_HEARTBEAT:
 		LED1_Neg();
+		break;
+	case EVNT_SW1_PRESSED:
+		LED1_On();
+		break;
+	case EVNT_SW2_PRESSED:
+		LED2_On();
 		break;
 	default:
 		break;
@@ -49,7 +56,7 @@ static void APP_HandleEvents(EVNT_Handle event)
  */
 static void APP_Task(void)
 {
-	EVNT_SetEvent(EVENT_STARTUP);	/* set startup event */
+	EVNT_SetEvent(EVNT_STARTUP);	/* set startup event */
 	for(;;){
 		EVNT_HandleEvent(APP_HandleEvents);
 		WAIT1_Waitms(100); /* wait some time */
@@ -59,6 +66,7 @@ static void APP_Task(void)
 void initApplication()
 {
 	PL_Init();
+	KEY_Init();
 }
 
 void runApplication()

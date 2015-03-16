@@ -8,6 +8,7 @@
  */
 
 #include "Platform.h"
+
 #if PL_HAS_KEYS
   #include "Keys.h"
 #if PL_HAS_EVENTS

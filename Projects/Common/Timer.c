@@ -18,7 +18,7 @@ void TMR_OnInterrupt(void)
 
 	if(cntr==(1000/TMR_TICK_MS))
 	{
-		EVNT_SetEvent(EVENT_LED_HEARTBEAT);
+		EVNT_SetEvent(EVNT_LED_HEARTBEAT);
 		cntr = 0;
 	}
 }
