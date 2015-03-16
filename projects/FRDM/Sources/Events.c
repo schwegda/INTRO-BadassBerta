@@ -30,7 +30,6 @@
 #include "Cpu.h"
 #include "Events.h"
 
-#include "../../Common/LED.h"
 #include "../../Common/Timer.h"
 #include "../../Common/Keys.h"
 
@@ -97,7 +96,9 @@ void TI1_OnInterrupt(void)
 */
 void SW7_OnInterrupt(void)
 {
-  /* Write your code here ... */
+	if(SW7_GetVal() == 0){
+		  KEY_OnInterrupt(KEY_BTN7);
+	  }
 }
 
 /*
@@ -114,7 +115,9 @@ void SW7_OnInterrupt(void)
 */
 void SW4_OnInterrupt(void)
 {
-  /* Write your code here ... */
+	if(SW4_GetVal() == 0){
+		  KEY_OnInterrupt(KEY_BTN4);
+	  }
 }
 
 
@@ -132,8 +135,13 @@ void SW4_OnInterrupt(void)
 */
 void SW3_OnInterrupt(void)
 {
-
+	if(PORT_PDD_GetPinInterruptFlag(PORTA_BASE_PTR, ExtIntLdd5_PIN_INDEX))
+	{
+		PORT_PDD_ClearPinInterruptFlag(PORTA_BASE_PTR,  ExtIntLdd5_PIN_INDEX);
+		KEY_OnInterrupt(KEY_BTN3);
+	}
 }
+
 
 /*
 ** ===================================================================
