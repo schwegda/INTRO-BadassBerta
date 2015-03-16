@@ -47,6 +47,8 @@
 #include "TI1.h"
 #include "TimerIntLdd1.h"
 #include "TU1.h"
+#include "Buzzer_PE.h"
+#include "BitIoLdd3.h"
 
 #ifdef __cplusplus
 extern "C" {

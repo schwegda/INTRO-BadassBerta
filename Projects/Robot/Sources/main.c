@@ -43,6 +43,8 @@
 #include "TI1.h"
 #include "TimerIntLdd1.h"
 #include "TU1.h"
+#include "Buzzer_PE.h"
+#include "BitIoLdd3.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -51,6 +53,7 @@
 /* User includes (#include below this line is not maintained by Processor Expert) */
 #include "../../Common/LED.h"
 #include "../../Common/Platform.h"
+#include "../../Common/Application.h"
 /*lint -save  -e970 Disable MISRA rule (6.3) checking. */
 int main(void)
 /*lint -restore Enable MISRA rule (6.3) checking. */
@@ -62,8 +65,11 @@ int main(void)
   /*** End of Processor Expert internal initialization.                    ***/
 
   /* Write your code here */
-  PL_Init();
+  initApplication();
+  runApplication();		/*!<usually never runs out of this Method>*/
+  deinitApplication();
 
+  PL_Init();
   while(1)
   {
 	  WAIT1_Waitms(251);
@@ -80,11 +86,6 @@ int main(void)
   CS1_EnterCritical();
   // Critical code
   CS1_ExitCritical();
-
-
-
-
-
 
   PL_Deinit();
 
