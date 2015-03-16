@@ -35,6 +35,7 @@
 #include "Platform.h"
 #include "LED.h"
 #include "Event.h"
+#include "Buzzer.h"
 
 void PL_Init(void)
 {
