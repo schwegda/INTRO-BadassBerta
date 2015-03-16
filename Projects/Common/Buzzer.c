@@ -12,13 +12,6 @@
 #include "Buzzer.h"
 
 
-/*!
- * \brief Initialize the buzzers.
- */
-void Buzzer_Init(void) {
-  /* all Buzzer's off by default */
-	Buzzer_Off();
-}
 
 /*@}
  */

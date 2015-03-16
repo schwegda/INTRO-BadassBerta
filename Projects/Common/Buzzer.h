@@ -19,14 +19,12 @@
   #define Buzzer_Off() Buzzer_PE_ClrVal()
   #define Buzzer_GetValue() Buzzer_PE_GetVal()
   #define Buzzer_Negate() Buzzer_PE_NegVal()
-  #define Buzzer_Init()
 
 #else
   #define Buzzer_On() 		/* do nothing */
   #define Buzzer_Off() 		/* do nothing */
   #define Buzzer_GetValue() /* do nothing */
   #define Buzzer_Negate() 	/* do nothing */
-  #define Buzzer_Init() 	/* do nothing */
 #endif
 
 #endif /* BUZZER_H_ */
