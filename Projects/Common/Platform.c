@@ -36,6 +36,7 @@
 #include "LED.h"
 #include "Event.h"
 #include "Buzzer.h"
+#include "Keys.h"
 
 void PL_Init(void)
 {
@@ -46,6 +47,9 @@ void PL_Init(void)
 	EVNT_Init();
 #endif
 #if PL_HAS_BUZZER
+#endif
+#if PL_HAS_KEYS
+	KEY_Init();
 #endif
 }
 
