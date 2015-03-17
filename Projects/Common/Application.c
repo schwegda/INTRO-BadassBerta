@@ -25,7 +25,7 @@
 #include "Event.h"
 #include "Keys.h"
 #include "Buzzer.h"
-
+#include "CLS1.h"
 /*!
  * \brief Application event handler
  * \param event Event to be handled
@@ -113,7 +113,8 @@ static void APP_Task(void)
 void initApplication()
 {
 	PL_Init();
-	KEY_Init();
+	CLS1_SendStr("Hello I'am BadassBerta and I'm going to destroy you!\n",CLS1_GetStdio()->stdOut);
+	CLS1_SendNum32s(23452345,CLS1_GetStdio()->stdOut);
 }
 
 void runApplication()
