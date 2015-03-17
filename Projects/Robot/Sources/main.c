@@ -77,26 +77,6 @@ int main(void)
   runApplication();		/*!<usually never runs out of this Method>*/
   deinitApplication();
 
-  PL_Init();
-  while(1)
-  {
-	  WAIT1_Waitms(251);
-	  LED1_On();
-	  LED2_On();
-	  WAIT1_Waitms(250);
-	  LED1_Off();
-	  LED2_Off();
-  }
-
-  // Example of a critical section
-  CS1_CriticalVariable()
-
-  CS1_EnterCritical();
-  // Critical code
-  CS1_ExitCritical();
-
-  PL_Deinit();
-
   /*** Don't write any code pass this line, or it will be deleted during code generation. ***/
   /*** RTOS startup code. Macro PEX_RTOS_START is defined by the RTOS component. DON'T MODIFY THIS CODE!!! ***/
   #ifdef PEX_RTOS_START

@@ -37,6 +37,7 @@
 #include "Event.h"
 #include "Buzzer.h"
 #include "Keys.h"
+#include "Trigger.h"
 
 void PL_Init(void)
 {
@@ -51,6 +52,9 @@ void PL_Init(void)
 #if PL_HAS_KEYS
 	KEY_Init();
 #endif
+#if PL_HAS_TRIGGER
+	TRG_Init();
+#endif
 }
 
 void PL_Deinit(void)
@@ -60,6 +64,9 @@ void PL_Deinit(void)
 #endif
 #if PL_HAS_EVENTS
 	EVNT_Deinit();
+#endif
+#if PL_HAS_TRIGGER
+	TRG_Deinit();
 #endif
 }
 

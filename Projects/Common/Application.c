@@ -26,6 +26,7 @@
 #include "Keys.h"
 #include "Buzzer.h"
 #include "CLS1.h"
+#include "Trigger.h"
 /*!
  * \brief Application event handler
  * \param event Event to be handled
@@ -50,10 +51,8 @@ static void APP_HandleEvents(EVNT_Handle event)
 		#if PL_NOF_KEYS >= 1
 			case EVNT_SW1_PRESSED:
 				LED1_Neg();
-				Buzzer_Negate();
-
                 CLS1_SendStr("CollStuff \n", CLS1_GetStdio()->stdOut);
-
+                beep(1000);
 			  break;
 		#endif
 
