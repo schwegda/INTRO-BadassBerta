@@ -25,6 +25,8 @@
 #include "Event.h"
 #include "Keys.h"
 #include "Buzzer.h"
+#include "CLS1.h"
+
 
 /*!
  * \brief Application event handler
@@ -51,7 +53,9 @@ static void APP_HandleEvents(EVNT_Handle event)
 			case EVNT_SW1_PRESSED:
 				LED1_Neg();
 				Buzzer_Negate();
-			  //CLS1_SendStr("SW1\r\n", CLS1_GetStdio()->stdOut);
+
+				CLS1_SendStr("CollStuff \n", CLS1_GetStdio()->stdOut);
+
 			  break;
 		#endif
 
