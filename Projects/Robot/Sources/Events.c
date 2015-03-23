@@ -95,7 +95,7 @@ void TI1_OnInterrupt(void)
 void SW1_OnInterrupt(void)
 {
 	/*! Damit Heartbeat nicht von diesem Interrupt unterbrochen wird*/
-	/*! \todo Abrage ob Pin tatsächlich auf 1 ist nicht mehr machen? */
+	/*! \todo Abfrage ob Pin tatsächlich auf 1 ist nicht mehr machen? */
 
 	/*
 	if (PORT_PDD_GetPinInterruptFlag(PORTA_BASE_PTR, ExtIntLdd1_PIN_INDEX))

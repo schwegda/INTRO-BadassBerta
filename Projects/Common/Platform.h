@@ -74,6 +74,8 @@
      /*!< We have up to 2 LED's on the robo board */
   #define PL_NOF_KEYS       (1)
      /*!< We have up to 1 push button */
+  #define PL_HAS_DEBOUNCE	(1)
+	 /*!< We debounce the buttons*/
 #else
   #error "unknown configuration?"
 #endif
