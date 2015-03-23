@@ -8,6 +8,7 @@
 /*!
 ** @file Application.c
 ** @version 01.00
+** @author David Schwegler, david.schwegler@stud.hslu.ch
 ** @brief
 **  	Application main routine implementation.
 **      This module is our main loop program so you don't have to modify main.c.
@@ -15,8 +16,6 @@
 ** @detail
 **
 */
-
-
 #include "PE_Types.h"
 #include "Platform.h"
 #include "LED.h"
