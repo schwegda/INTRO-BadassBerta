@@ -9,6 +9,7 @@
 
 #include "Timer.h"
 #include "Event.h"
+#include "Trigger.h"
 
 void TMR_OnInterrupt(void)
 {
@@ -21,6 +22,10 @@ void TMR_OnInterrupt(void)
 		EVNT_SetEvent(EVNT_LED_HEARTBEAT);
 		cntr = 0;
 	}
+
+#if PL_HAS_TRIGGER
+	TRG_IncTick();
+#endif
 }
 
 void TMR_Init(void)

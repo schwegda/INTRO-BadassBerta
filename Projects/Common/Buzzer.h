@@ -27,6 +27,9 @@
   #define Buzzer_Negate() 	/* do nothing */
 #endif
 
+static void beep_Off();
+void beep(uint16_t ms);
+
 #endif /* BUZZER_H_ */
 /*@}
  */

@@ -32,6 +32,7 @@
 
 #include "../../Common/Timer.h"
 #include "../../Common/Keys.h"
+#include "../../Common/Trigger.h"
 
 #ifdef __cplusplus
 extern "C" {
