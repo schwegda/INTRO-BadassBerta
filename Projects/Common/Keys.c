@@ -14,8 +14,14 @@
 #if PL_HAS_EVENTS
   #include "Event.h"
 #endif
+#if PL_HAS_DEBOUNCE
+  #include "KeyDebounce.h"
+#endif
 
 void KEY_Scan(void) {
+#if PL_HAS_DEBOUNCE
+  KEYDBNC_Process();
+#else
   /*! \todo check handling all keys */
 #if PL_NOF_KEYS >= 1 && PL_KEY_POLLED_KEY1
   if (KEY1_Get()) { /* key pressed */
@@ -52,10 +58,14 @@ void KEY_Scan(void) {
     EVNT_SetEvent(EVNT_SW7_PRESSED);
   }
 #endif
+#endif
 }
 
 #if PL_HAS_KBI
 void KEY_OnInterrupt(KEY_Buttons button) {
+#if PL_HAS_DEBOUNCE
+  KEYDBNC_Process();
+#else
   switch(button) {
 #if PL_NOF_KEYS >= 1
     case KEY_BTN1: EVNT_SetEvent(EVNT_SW1_PRESSED); break;
@@ -82,6 +92,7 @@ void KEY_OnInterrupt(KEY_Buttons button) {
       /* unknown? */
       break;
   } /* switch */
+#endif
 }
 
 void KEY_EnableInterrupts(void) {

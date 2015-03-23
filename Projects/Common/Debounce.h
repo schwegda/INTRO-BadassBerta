@@ -16,7 +16,7 @@
 typedef enum DBNC_KeyStateKinds {
   DBNC_KEY_IDLE = 0, /*<! Initial idle state */
   DBNC_KEY_PRESSED,  /*<! Key pressing detected, see if it is a long key */
-  DBNC_KEY_RELEASE   /*<! key released */
+  DBNC_KEY_RELEASE   /*<! Got a key pressed, wait for key released */
 } DBNC_KeyStateKinds;
 
 /*! \brief Different kind of callback events. */

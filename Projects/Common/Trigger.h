@@ -20,6 +20,7 @@
 typedef enum {
   /*! \todo Extend the list of triggers as needed */
 	TRG_BUZZER_OFF,		/*!<Buzzer Trigger Event>*/
+	TRG_KEYPRESS, 		/*!<Used for Debouncing and Key Stuff */
 	TRG_NOF_TRIGGERS /*!< Must be last! */
 } TRG_TriggerKind;
 

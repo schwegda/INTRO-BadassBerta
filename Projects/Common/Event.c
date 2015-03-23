@@ -26,15 +26,29 @@ static EVNT_MemUnit EVNT_Events[((EVNT_NOF_EVENTS-1)/EVNT_MEM_UNIT_NOF_BITS)+1];
   (bool)(EVNT_Events[(event)/EVNT_MEM_UNIT_NOF_BITS]&((1<<(EVNT_MEM_UNIT_NOF_BITS-1))>>((uint8_t)((event)%EVNT_MEM_UNIT_NOF_BITS)))) /*!< Return TRUE if event is set */
 
 void EVNT_SetEvent(EVNT_Handle event) {
+  CS1_CriticalVariable()
+
+  CS1_EnterCritical();
   SET_EVENT(event);
+  CS1_ExitCritical();
 }
 
 void EVNT_ClearEvent(EVNT_Handle event) {
+  CS1_CriticalVariable()
+
+  CS1_EnterCritical();
   CLR_EVENT(event);
+  CS1_ExitCritical();
 }
 
 bool EVNT_EventIsSet(EVNT_Handle event) {
-  return GET_EVENT(event);
+  CS1_CriticalVariable()
+  bool res;
+
+  CS1_EnterCritical();
+  res = GET_EVENT(event);
+  CS1_ExitCritical();
+  return res;
 }
 
 bool EVNT_EventIsSetAutoClear(EVNT_Handle event) {

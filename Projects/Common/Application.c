@@ -26,6 +26,7 @@
 #include "Buzzer.h"
 #include "CLS1.h"
 #include "Trigger.h"
+#include "KeyDebounce.h"
 /*!
  * \brief Application event handler
  * \param event Event to be handled
@@ -33,26 +34,34 @@
 static void APP_HandleEvents(EVNT_Handle event)
 {
 	switch(event){
-	case EVNT_STARTUP:
-		LED1_On();
-		WAIT1_Waitms(50);
-		LED1_Off();
-		for(int i=0;i<30;i++)
-		{
-			Buzzer_Negate();
-			WAIT1_Waitms(5);
-		}
-		break;
-	case EVNT_LED_HEARTBEAT:
-		LED1_Neg();
-		break;
+		case EVNT_STARTUP:
+			LED1_On();
+			WAIT1_Waitms(50);
+			LED1_Off();
+			for(int i=0;i<30;i++)
+			{
+				Buzzer_Negate();
+				WAIT1_Waitms(5);
+			}
+			break;
+
+		case EVNT_LED_HEARTBEAT:
+			LED1_Neg();
+			break;
 
 		#if PL_NOF_KEYS >= 1
 			case EVNT_SW1_PRESSED:
 				LED1_Neg();
-                CLS1_SendStr("CollStuff \n", CLS1_GetStdio()->stdOut);
-                beep(1000);
+				CLS1_SendStr("SW1 pressed \r\n", CLS1_GetStdio()->stdOut);
 			  break;
+
+			case EVNT_SW1_LPRESSED:
+				CLS1_SendStr("SW1 long pressed \n", CLS1_GetStdio()->stdOut);
+			break;
+
+		    case EVNT_SW1_RELEASED:
+		        CLS1_SendStr("SW1 release\r\n", CLS1_GetStdio()->stdOut);
+		    break;
 		#endif
 
 		#if PL_NOF_KEYS >= 2
@@ -107,6 +116,11 @@ static void APP_Task(void)
 	for(;;){
 		EVNT_HandleEvent(APP_HandleEvents);
 		WAIT1_Waitms(100); /* wait some time */
+
+	#if PL_HAS_KEYS && PL_NOF_KEYS>0
+		KEY_Scan(); /* scan keys */
+	#endif
+
 	}
 }
 

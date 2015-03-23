@@ -104,10 +104,11 @@ void SW1_OnInterrupt(void)
 	     KEY_OnInterrupt(KEY_BTN1);
 	  }
 	  */
-
-	if(SW1_GetVal() == 0){
-		  KEY_OnInterrupt(KEY_BTN1);
-	  }
+#if PL_HAS_KBI
+  if (KEY1_Get()) {
+    KEY_OnInterrupt(KEY_BTN1);
+  }
+#endif
 }
 
 /* END Events */

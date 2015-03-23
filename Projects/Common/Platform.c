@@ -55,6 +55,9 @@ void PL_Init(void)
 #if PL_HAS_TRIGGER
 	TRG_Init();
 #endif
+#if PL_HAS_DEBOUNCE
+  DBNC_Init();
+#endif
 }
 
 void PL_Deinit(void)
