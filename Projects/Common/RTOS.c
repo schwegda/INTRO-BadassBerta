@@ -10,19 +10,21 @@
 #include "FRTOS1.h"
 #include "LED.h"
 
-static portTASK_FUNCTION(T1, pvParameters) {
-  for(;;) {
-    LED1_Neg();
-    FRTOS1_vTaskDelay(1000/portTICK_RATE_MS);
-  }
-}
-
-static void testTask(void *pvParams) {
+static void T1(void *pvParams) {
 
   (void)pvParams;
   for(;;) {
     LED1_Neg();
-    FRTOS1_vTaskDelay(100/portTICK_RATE_MS);
+    //FRTOS1_vTaskDelay(100/portTICK_RATE_MS);
+  }
+}
+
+static void T2(void *pvParams) {
+
+  (void)pvParams;
+  for(;;) {
+    LED2_Neg();
+    //FRTOS1_vTaskDelay(100/portTICK_RATE_MS);
   }
 }
 
@@ -33,20 +35,13 @@ void RTOS_Run(void) {
 }
 
 void RTOS_Init(void) {
-  /*! \todo Add tasks here */
-	  if (FRTOS1_xTaskCreate(
-			testTask,
-	        "Main",
-	        configMINIMAL_STACK_SIZE+100,
-	        (void*)NULL,
-	        tskIDLE_PRIORITY,
-	        (xTaskHandle*)NULL
-	      ) != pdPASS) {
-	     for(;;){}; /* error! probably out of memory */
-	  }
   if (FRTOS1_xTaskCreate(T1, (signed portCHAR *)"T1", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS) {
     for(;;){} /* error */
   }
+  if (FRTOS1_xTaskCreate(T2, (signed portCHAR *)"T2", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS) {
+      for(;;){} /* error */
+    }
+
 }
 
 void RTOS_Deinit(void) {
