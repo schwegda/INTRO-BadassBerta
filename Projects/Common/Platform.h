@@ -37,6 +37,8 @@
   /*!< Set to 1 to enable joystick shield support, 0 otherwise */
 #define PL_HAS_TRIGGER		  (1)
   /*!< Set to 1 for trigger enabled, 0 otherwise */
+  #define PL_HAS_DEBOUNCE	(1)
+	 /*!< We debounce the buttons*/
 
 /* if keys are using interrupts or are polled */
 #if PL_IS_FRDM
@@ -75,8 +77,6 @@
      /*!< We have up to 2 LED's on the robo board */
   #define PL_NOF_KEYS       (1)
      /*!< We have up to 1 push button */
-  #define PL_HAS_DEBOUNCE	(1)
-	 /*!< We debounce the buttons*/
 #else
   #error "unknown configuration?"
 #endif
