@@ -128,15 +128,15 @@ static void APP_Task(void)
 void initApplication()
 {
 	PL_Init();
-	CLS1_SendStr("Hello I'am BadassBerta and I'm going to destroy you!\n",CLS1_GetStdio()->stdOut);
-	CLS1_SendNum32s(23452345,CLS1_GetStdio()->stdOut);
+	//CLS1_SendStr("Hello I'am BadassBerta and I'm going to destroy you!\n",CLS1_GetStdio()->stdOut);
 
 	RTOS_Init();
-	RTOS_Run();
+
 }
 
 void runApplication()
 {
+	RTOS_Run();		/* never runs further */
 	APP_Task(); 	/* never runs further */
 
 #if 0
