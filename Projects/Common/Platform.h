@@ -37,8 +37,10 @@
   /*!< Set to 1 to enable joystick shield support, 0 otherwise */
 #define PL_HAS_TRIGGER		  (1)
   /*!< Set to 1 for trigger enabled, 0 otherwise */
-  #define PL_HAS_DEBOUNCE	(1)
-	 /*!< We debounce the buttons*/
+#define PL_HAS_DEBOUNCE	(1)
+  /*!< We debounce the buttons*/
+#define PL_HAS_RTOS (1)
+	/*!< Set to 1 to use RTOS */
 
 /* if keys are using interrupts or are polled */
 #if PL_IS_FRDM
