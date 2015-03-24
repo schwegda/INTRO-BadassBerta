@@ -27,6 +27,7 @@
 #include "CLS1.h"
 #include "Trigger.h"
 #include "KeyDebounce.h"
+#include "RTOS.h"
 /*!
  * \brief Application event handler
  * \param event Event to be handled
@@ -129,6 +130,9 @@ void initApplication()
 	PL_Init();
 	CLS1_SendStr("Hello I'am BadassBerta and I'm going to destroy you!\n",CLS1_GetStdio()->stdOut);
 	CLS1_SendNum32s(23452345,CLS1_GetStdio()->stdOut);
+
+	RTOS_Init();
+	RTOS_Run();
 }
 
 void runApplication()
