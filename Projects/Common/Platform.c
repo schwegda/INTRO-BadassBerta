@@ -38,6 +38,7 @@
 #include "Buzzer.h"
 #include "Keys.h"
 #include "Trigger.h"
+#include "Debounce.h"
 
 void PL_Init(void)
 {

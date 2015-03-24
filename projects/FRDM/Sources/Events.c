@@ -177,9 +177,11 @@ void SW2_OnInterrupt(void)
 */
 void SW1_OnInterrupt(void)
 {
-  if(SW1_GetVal() == 0){
-	  KEY_OnInterrupt(KEY_BTN1);
+#if PL_HAS_KBI
+  if (KEY1_Get()) {
+    KEY_OnInterrupt(KEY_BTN1);
   }
+#endif
 }
 
 /* END Events */
