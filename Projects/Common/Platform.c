@@ -39,6 +39,7 @@
 #include "Keys.h"
 #include "Trigger.h"
 #include "Debounce.h"
+#include "Shell.h"
 
 void PL_Init(void)
 {
@@ -59,6 +60,9 @@ void PL_Init(void)
 #if PL_HAS_DEBOUNCE
   DBNC_Init();
 #endif
+#if PL_HAS_SHELL
+  SHELL_Init();
+#endif
 }
 
 void PL_Deinit(void)
@@ -71,6 +75,9 @@ void PL_Deinit(void)
 #endif
 #if PL_HAS_TRIGGER
 	TRG_Deinit();
+#endif
+#if PL_HAS_SHELL
+  SHELL_Deinit();
 #endif
 }
 
