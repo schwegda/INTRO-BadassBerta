@@ -10,6 +10,7 @@
 #include "FRTOS1.h"
 #include "LED.h"
 
+/*
 static void T1(void *pvParams) {
 
   (void)pvParams;
@@ -26,7 +27,7 @@ static void T2(void *pvParams) {
     LED2_Neg();
     //FRTOS1_vTaskDelay(100/portTICK_RATE_MS);
   }
-}
+}*/
 
 
 /*! \brief Task which handles the events
@@ -50,12 +51,10 @@ void RTOS_Run(void) {
 }
 
 void RTOS_Init(void) {
-  if (FRTOS1_xTaskCreate(T1, (signed portCHAR *)"T1", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS) {
-    for(;;){} /* error */
-  }
-  if (FRTOS1_xTaskCreate(T2, (signed portCHAR *)"T2", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS) {
-      for(;;){} /* error */
-    }
+/*  if (FRTOS1_xTaskCreate(T1, (signed portCHAR *)"T1", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS) {
+    for(;;){} // error
+  }*/
+
 
 }
 
