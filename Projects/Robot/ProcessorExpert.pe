@@ -3,7 +3,7 @@
   <Header>
     <Name>Robot</Name>
     <SavedBy>Alexander</SavedBy>
-    <ModificationStamp>37</ModificationStamp>
+    <ModificationStamp>38</ModificationStamp>
     <Date>2015-03-30</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.10.1.RT6_b1444-1070</PEversion>
@@ -17272,7 +17272,7 @@
         <ItemSymbol>RxPullupPinName</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>A</Value>
+        <Value>E</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>RxPullUpPinNumber</ItemSymbol>

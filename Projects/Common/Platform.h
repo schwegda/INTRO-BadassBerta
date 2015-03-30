@@ -83,7 +83,7 @@
      /*!< We have up to 2 LED's on the robo board */
   #define PL_NOF_KEYS       (1)
      /*!< We have up to 1 push button */
-  #define PL HAS BLUETOOTH (1)
+  #define PL_HAS_BLUETOOTH (1)
 	 /*! Set to 1 to use Bluetooth Communication*/
 #else
   #error "unknown configuration?"
