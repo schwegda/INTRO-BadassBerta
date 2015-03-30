@@ -43,6 +43,8 @@
 	/*!< Set to 1 to use RTOS */
 #define PL_HAS_SHELL (1)
 	/*! Set to 1 to use Command-Shell*/
+#define PL HAS USB CDC (1 && PL_HAS_SHELL)
+	/*! Set to 1 to use Command-Shell over usb CDC*/
 
 /* if keys are using interrupts or are polled */
 #if PL_IS_FRDM
@@ -81,6 +83,8 @@
      /*!< We have up to 2 LED's on the robo board */
   #define PL_NOF_KEYS       (1)
      /*!< We have up to 1 push button */
+  #define PL HAS BLUETOOTH (1)
+	 /*! Set to 1 to use Bluetooth Communication*/
 #else
   #error "unknown configuration?"
 #endif
