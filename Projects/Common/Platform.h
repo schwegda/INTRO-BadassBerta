@@ -41,6 +41,8 @@
   /*!< We debounce the buttons*/
 #define PL_HAS_RTOS (1)
 	/*!< Set to 1 to use RTOS */
+#define PL_HAS_SHELL (1)
+	/*! Set to 1 to use Command-Shell*/
 
 /* if keys are using interrupts or are polled */
 #if PL_IS_FRDM
