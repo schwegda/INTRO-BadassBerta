@@ -85,6 +85,8 @@
      /*!< We have up to 1 push button */
   #define PL_HAS_BLUETOOTH (1)
 	 /*! Set to 1 to use Bluetooth Communication*/
+#define PL_HAS_USB_CDC        (1 && PL_HAS_SHELL)
+  /*!< Set to 1 for USB CDC enabled, 0 otherwise */
 #else
   #error "unknown configuration?"
 #endif

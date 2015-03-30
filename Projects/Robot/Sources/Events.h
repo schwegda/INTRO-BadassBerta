@@ -54,6 +54,11 @@
 #include "ASerialLdd1.h"
 #include "UTIL1.h"
 #include "FRTOS1.h"
+#include "USB1.h"
+#include "USB0.h"
+#include "CDC1.h"
+#include "Tx1.h"
+#include "Rx1.h"
 
 #ifdef __cplusplus
 extern "C" {
