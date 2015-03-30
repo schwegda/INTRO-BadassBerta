@@ -29,6 +29,21 @@ static void T2(void *pvParams) {
 }
 
 
+/*! \brief Task which handles the events
+ *
+ *	detailed description is the following...
+ */
+static void Task_HandleEvents (void *pvParams)
+{
+	(void)pvParams;
+	for(;;)
+	{
+
+	}
+
+}
+
+
 void RTOS_Run(void) {
   FRTOS1_vTaskStartScheduler();
   /* does usually not return here */

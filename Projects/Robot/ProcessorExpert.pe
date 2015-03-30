@@ -4,7 +4,7 @@
     <Name>Robot</Name>
     <SavedBy>Alexander</SavedBy>
     <ModificationStamp>35</ModificationStamp>
-    <Date>2015-03-24</Date>
+    <Date>2015-03-30</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.10.1.RT6_b1444-1070</PEversion>
   </Header>
@@ -13217,8 +13217,6 @@
               <List lines_count="0" />
               <UnitText>ms</UnitText>
               <MinCounterTicks>0</MinCounterTicks>
-              <ControlledTimingCfgFromPropertySymbol>Tmg_ChanOffset0</ControlledTimingCfgFromPropertySymbol>
-              <ControlledTimingCfgFromComponentRef>LinkedTimerUnit</ControlledTimingCfgFromComponentRef>
             </ItemState>
             <ItemState>
               <ItemSymbol>_InitGrp</ItemSymbol>
