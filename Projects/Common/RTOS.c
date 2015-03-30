@@ -9,6 +9,7 @@
 #include "RTOS.h"
 #include "FRTOS1.h"
 #include "LED.h"
+#include "Application.h"
 
 /*
 static void T1(void *pvParams) {
@@ -39,7 +40,7 @@ static void Task_HandleEvents (void *pvParams)
 	(void)pvParams;
 	for(;;)
 	{
-
+		run_tasks();
 	}
 
 }
@@ -55,7 +56,9 @@ void RTOS_Init(void) {
     for(;;){} // error
   }*/
 
-
+	if (FRTOS1_xTaskCreate(Task_HandleEvents, (signed portCHAR *)"Handle_Tasks", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY, NULL) != pdPASS) {
+	for(;;){}
+	}
 }
 
 void RTOS_Deinit(void) {
