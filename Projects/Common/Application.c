@@ -108,6 +108,7 @@ static void APP_HandleEvents(EVNT_Handle event)
 	}
 }
 
+
 /*!
  * \brief Application main 'task'.
  */
@@ -125,6 +126,10 @@ static void APP_Task(void)
 	}
 }
 
+void run_tasks(void){
+	APP_Task();
+}
+
 void initApplication()
 {
 	PL_Init();
@@ -137,7 +142,7 @@ void initApplication()
 void runApplication()
 {
 	RTOS_Run();		/* never runs further */
-	APP_Task(); 	/* never runs further */
+	//APP_Task(); 	/* never runs further */
 
 #if 0
 	for(;;)

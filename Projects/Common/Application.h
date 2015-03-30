@@ -22,5 +22,6 @@ void initApplication();
 void runApplication();
 void deinitApplication();
 
+void run_tasks(void);
 
 #endif /* APPLICATION_H_ */
