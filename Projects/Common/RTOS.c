@@ -18,8 +18,7 @@
 static void Task_HandleEvents (void *pvParams)
 {
 	(void)pvParams;
-	for(;;)
-	{
+	for(;;){
 		run_tasks();
 	}
 

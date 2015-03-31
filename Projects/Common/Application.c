@@ -117,8 +117,7 @@ static void APP_Task(void)
 	EVNT_SetEvent(EVNT_STARTUP);	/* set startup event */
 	for(;;){
 		EVNT_HandleEvent(APP_HandleEvents);
-		WAIT1_Waitms(100); /* wait some time */
-
+		WAIT1_WaitOSms(100/portTICK_RATE_MS);	/* wait some time */
 	#if PL_HAS_KEYS && PL_NOF_KEYS>0
 		KEY_Scan(); /* scan keys */
 	#endif
@@ -134,7 +133,7 @@ void initApplication()
 {
 	PL_Init();
 	//CLS1_SendStr("Hello I'am BadassBerta and I'm going to destroy you!\n",CLS1_GetStdio()->stdOut);
-
+	SQUEUE_Init();
 	RTOS_Init();
 
 }

@@ -3,8 +3,8 @@
   <Header>
     <Name>FRDM</Name>
     <SavedBy>David Schwegler</SavedBy>
-    <ModificationStamp>42</ModificationStamp>
-    <Date>2015-03-30</Date>
+    <ModificationStamp>45</ModificationStamp>
+    <Date>2015-03-31</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.10.1.RT6_b1444-1070</PEversion>
   </Header>
@@ -29,7 +29,7 @@
     <UseExistingModules>true</UseExistingModules>
     <RenamePeripheries>false</RenamePeripheries>
     <Autodependency>true</Autodependency>
-    <ProjectCompNumb>120</ProjectCompNumb>
+    <ProjectCompNumb>123</ProjectCompNumb>
     <DelUnusedPreviouslyGenFiles>true</DelUnusedPreviouslyGenFiles>
     <GeneratedCodeFrozen>false</GeneratedCodeFrozen>
     <AssignInitComponentNameToPrph>true</AssignInitComponentNameToPrph>
@@ -26598,7 +26598,7 @@
         <ItemSymbol>ProjectNameStr</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Value>My Project Name</Value>
+        <Value>BadassBerta FRDM</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>SilentModePrefixChar</ItemSymbol>
