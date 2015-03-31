@@ -177,6 +177,9 @@ static portTASK_FUNCTION(ShellTask, pvParameters) {
 #if PL_HAS_BLUETOOTH
         BT_stdio.stdOut(ch); /* copy on Bluetooth */
 #endif
+#if PL_HAS_USB_CDC
+        CDC_stdio.stdOut(ch); /* copy to USB_CDC */
+#endif
       }
     }
 #endif
