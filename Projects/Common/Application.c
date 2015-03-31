@@ -28,6 +28,9 @@
 #include "Trigger.h"
 #include "KeyDebounce.h"
 #include "RTOS.h"
+#if configUSE_TRACE_HOOKS
+  #include "RTOSTRC1.h"
+#endif
 /*!
  * \brief Application event handler
  * \param event Event to be handled
@@ -117,7 +120,7 @@ static void APP_Task(void)
 	EVNT_SetEvent(EVNT_STARTUP);	/* set startup event */
 	for(;;){
 		EVNT_HandleEvent(APP_HandleEvents);
-		WAIT1_Waitms(100); /* wait some time */
+		WAIT1_WaitOSms(100); /* wait some time */
 
 	#if PL_HAS_KEYS && PL_NOF_KEYS>0
 		KEY_Scan(); /* scan keys */
@@ -141,6 +144,11 @@ void initApplication()
 
 void runApplication()
 {
+#if configUSE_TRACE_HOOKS
+  if (RTOSTRC1_uiTraceStart()==0) {
+    for(;;){} /* failed to start trace */
+  }
+#endif
 	RTOS_Run();		/* never runs further */
 	//APP_Task(); 	/* never runs further */
 

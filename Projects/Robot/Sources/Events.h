@@ -54,6 +54,8 @@
 #include "ASerialLdd1.h"
 #include "UTIL1.h"
 #include "FRTOS1.h"
+#include "RTOSTRC1.h"
+#include "RTOSCNTRLDD1.h"
 #include "USB1.h"
 #include "USB0.h"
 #include "CDC1.h"
@@ -148,6 +150,20 @@ void FRTOS1_vApplicationMallocFailedHook(void);
 **     Description :
 **         If enabled, the RTOS will call this hook in case memory
 **         allocation failed.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+
+void RTOSTRC1_OnTraceWrap(void);
+/*
+** ===================================================================
+**     Event       :  RTOSTRC1_OnTraceWrap (module Events)
+**
+**     Component   :  RTOSTRC1 [PercepioTrace]
+**     Description :
+**         Called for trace ring buffer wrap around. This gives the
+**         application a chance to dump the trace buffer.
 **     Parameters  : None
 **     Returns     : Nothing
 ** ===================================================================
