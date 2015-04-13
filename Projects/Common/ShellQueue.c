@@ -19,7 +19,10 @@ static xQueueHandle SQUEUE_Queue;
 
 void SQUEUE_SendString(const unsigned char *str) {
 	while(*str!='\0'){
-		FRTOS1_xQueueSendToBack(SQUEUE_Queue,str,100/portTICK_RATE_MS); /* (Queue,pointer to date, ticks to wait*/
+		if (FRTOS1_xQueueSendToBack(SQUEUE_Queue, str, 100/portTICK_RATE_MS)!=pdPASS) {
+			/*for(;;){}*/ /* ups? */ /* loosing character */
+		}
+		str++;
 	}
 
 }
@@ -29,7 +32,7 @@ unsigned char SQUEUE_ReceiveChar(void) {
 	portBASE_TYPE res;
 	res = FRTOS1_xQueueReceive(SQUEUE_Queue,&ch,0);
 
-	if(res = errQUEUE_EMPTY){
+	if(res == errQUEUE_EMPTY){
 		return '\0';
 	}else{
 		return ch;

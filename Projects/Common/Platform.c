@@ -40,6 +40,7 @@
 #include "Trigger.h"
 #include "Debounce.h"
 #include "Shell.h"
+#include "Sem.h"
 
 void PL_Init(void)
 {
@@ -62,6 +63,9 @@ void PL_Init(void)
 #endif
 #if PL_HAS_SHELL
   SHELL_Init();
+#endif
+#if PL_HAS_SEMAPHORE
+  SEM_Init();
 #endif
 }
 
