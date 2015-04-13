@@ -43,8 +43,10 @@
 	/*!< Set to 1 to use RTOS */
 #define PL_HAS_SHELL (1)
 	/*! Set to 1 to use Command-Shell*/
-#define PL HAS USB CDC (1 && PL_HAS_SHELL)
+#define PL_HAS_USB_CDC (1)
 	/*! Set to 1 to use Command-Shell over usb CDC*/
+#define PL_HAS_SHELL_QUEUE (1)
+	/*! Set to 1 to use Shell Queue */
 
 /* if keys are using interrupts or are polled */
 #if PL_IS_FRDM
@@ -85,8 +87,6 @@
      /*!< We have up to 1 push button */
   #define PL_HAS_BLUETOOTH (1)
 	 /*! Set to 1 to use Bluetooth Communication*/
-  #define PL_HAS_USB_CDC        (1 && PL_HAS_SHELL)
-     /*!< Set to 1 for USB CDC enabled, 0 otherwise */
 #else
   #error "unknown configuration?"
 #endif

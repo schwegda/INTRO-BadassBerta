@@ -51,12 +51,12 @@
 #include "UTIL1.h"
 #include "FRTOS1.h"
 #include "RTOSTRC1.h"
-#include "RTOSCNTRLDD1.h"
 #include "USB1.h"
 #include "USB0.h"
 #include "CDC1.h"
 #include "Tx1.h"
 #include "Rx1.h"
+#include "HF1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
