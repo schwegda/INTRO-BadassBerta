@@ -29,6 +29,9 @@
 #include "KeyDebounce.h"
 #include "RTOS.h"
 #include "ShellQueue.h"
+#if configUSE_TRACE_HOOKS
+  #include "RTOSTRC1.h"
+#endif
 /*!
  * \brief Application event handler
  * \param event Event to be handled
@@ -141,9 +144,29 @@ void initApplication()
 
 void runApplication()
 {
+	#if configUSE_TRACE_HOOKS
+	  if (RTOSTRC1_uiTraceStart()==0) {
+		for(;;){} /* failed to start trace */
+	  }
+	#endif
+
 	RTOS_Run();		/* never runs further */
 	//APP_Task(); 	/* never runs further */
 
+#if 0
+	for(;;)
+		{
+			LED1_On();
+			WAIT1_Waitms(500);
+			LED1_Off();
+			LED2_On();
+			WAIT1_Waitms(500);
+			LED2_Off();
+			LED3_On();
+			WAIT1_Waitms(500);
+			LED3_Off();
+		}
+#endif
 }
 
 void deinitApplication()
