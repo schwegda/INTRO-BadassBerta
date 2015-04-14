@@ -28,7 +28,7 @@ static portTASK_FUNCTION(vMasterTask, pvParameters) {
   for(;;) {
     /*! \todo Implement functionality */
 	  FRTOS1_xSemaphoreGive(MySem);
-	  WAIT1_WaitOSms(1000/portTICK_RATE_MS);	/* wait some time */
+	  WAIT1_WaitOSms(700/portTICK_RATE_MS);	/* wait some time */
   }
 }
 
@@ -49,5 +49,6 @@ void SEM_Init(void) {
   if (MySem == NULL) {
     for(;;); /* creation failed */
   }
+  FRTOS1_vQueueAddToRegistry(MySem,"Semaphore")
 }
 #endif /* PL_HAS_SEMAPHORE */

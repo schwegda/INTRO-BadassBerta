@@ -61,6 +61,22 @@
 #include "Tx1.h"
 #include "Rx1.h"
 #include "HF1.h"
+#include "LED_IR.h"
+#include "LEDpin3.h"
+#include "BitIoLdd5.h"
+#include "RefCnt.h"
+#include "IR1.h"
+#include "BitIoLdd6.h"
+#include "IR2.h"
+#include "BitIoLdd7.h"
+#include "IR3.h"
+#include "BitIoLdd8.h"
+#include "IR4.h"
+#include "BitIoLdd9.h"
+#include "IR5.h"
+#include "BitIoLdd10.h"
+#include "IR6.h"
+#include "BitIoLdd11.h"
 
 #ifdef __cplusplus
 extern "C" {

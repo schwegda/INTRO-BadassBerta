@@ -89,6 +89,8 @@
      /*!< We have up to 1 push button */
   #define PL_HAS_BLUETOOTH (1)
 	 /*! Set to 1 to use Bluetooth Communication*/
+  #define PL_HAS_LINE_SENSOR (1)
+	 /*! Set to 1 to use the Line Sensors*/
 #else
   #error "unknown configuration?"
 #endif
