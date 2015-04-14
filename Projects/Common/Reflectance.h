@@ -34,6 +34,8 @@
  */
 uint16_t REF_GetLineValue(void);
 
+void REF_SetCalinrationFlag(bool status);
+
 /*!
  * \brief Driver Deinitialization.
  */

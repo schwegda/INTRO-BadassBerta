@@ -29,9 +29,11 @@
 #include "KeyDebounce.h"
 #include "RTOS.h"
 #include "ShellQueue.h"
+#include "Reflectance.h"
 #if configUSE_TRACE_HOOKS
   #include "RTOSTRC1.h"
 #endif
+
 /*!
  * \brief Application event handler
  * \param event Event to be handled
@@ -62,6 +64,7 @@ static void APP_HandleEvents(EVNT_Handle event)
 
 			case EVNT_SW1_LPRESSED:
 				CLS1_SendStr("SW1 long pressed \n", CLS1_GetStdio()->stdOut);
+				REF_SetCalinrationFlag(TRUE);
 			break;
 
 		    case EVNT_SW1_RELEASED:

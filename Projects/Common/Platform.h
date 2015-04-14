@@ -81,13 +81,13 @@
 #endif
   #endif
 #elif PL_IS_ROBO
-  #define PL_HAS_BUZZER (1)
+  #define PL_HAS_BUZZER 	(1)
   	  /*!< We have one Buzzer on the Robot Baseboard */
   #define PL_NOF_LEDS       (2)
      /*!< We have up to 2 LED's on the robo board */
   #define PL_NOF_KEYS       (1)
      /*!< We have up to 1 push button */
-  #define PL_HAS_BLUETOOTH (1)
+  #define PL_HAS_BLUETOOTH 	(1)
 	 /*! Set to 1 to use Bluetooth Communication*/
   #define PL_HAS_LINE_SENSOR (1)
 	 /*! Set to 1 to use the Line Sensors*/

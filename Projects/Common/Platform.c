@@ -41,6 +41,7 @@
 #include "Debounce.h"
 #include "Shell.h"
 #include "Sem.h"
+#include "Reflectance.h"
 
 void PL_Init(void)
 {
@@ -66,6 +67,9 @@ void PL_Init(void)
 #endif
 #if PL_HAS_SEMAPHORE
   SEM_Init();
+#endif
+#if PL_HAS_LINE_SENSOR
+  REF_Init();
 #endif
 }
 

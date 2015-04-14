@@ -10,6 +10,7 @@
 #if PL_HAS_LINE_SENSOR
 #include "Reflectance.h"
 #include "LED_IR.h"
+#include "CS1.h"
 #include "WAIT1.h"
 #include "RefCnt.h" /* timer counter to measure reflectance */
 #include "IR1.h"
@@ -23,7 +24,6 @@
 #include "Application.h"
 #include "Event.h"
 #include "Shell.h"
-#include "NVM_Config.h"
 #if PL_HAS_BUZZER
   #include "Buzzer.h"
 #endif
@@ -32,6 +32,9 @@
 #define REF_MIN_LINE_VAL      0x60   /* minimum value indicating a line */
 #define REF_MIN_NOISE_VAL     0x40   /* values below this are not added to the weighted sum */
 #define REF_USE_WHITE_LINE    0  /* if set to 1, then the robot is using a white (on black) line, otherwise a black (on white) line */
+
+#define REF_SENSOR_TIMEOUT_US  1500  /* after this time, consider no reflection (black). Must be smaller than the timeout period of the RefCnt timer! */
+#define REF_SENSOR_TIMOUT_VAL  ((RefCnt_CNT_INP_FREQ_U_0/1000)*REF_SENSOR_TIMEOUT_US)/1000
 
 typedef enum {
   REF_STATE_INIT,
@@ -44,6 +47,8 @@ typedef enum {
 static volatile RefStateType refState = REF_STATE_INIT; /* state machine state */
 
 static LDD_TDeviceData *timerHandle;
+
+static bool CalibrationFlag = FALSE;
 
 typedef struct SensorFctType_ {
   void (*SetOutput)(void);
@@ -109,6 +114,7 @@ static const SensorFctType SensorFctArray[REF_NOF_SENSORS] = {
 static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   uint8_t cnt; /* number of sensor */
   uint8_t i;
+  RefCnt_TValueType timerVal;
 
   LED_IR_On(); /* IR LED's on */
   WAIT1_Waitus(200); /*! \todo adjust time as needed */
@@ -123,13 +129,18 @@ static void REF_MeasureRaw(SensorTimeType raw[REF_NOF_SENSORS]) {
   for(i=0;i<REF_NOF_SENSORS;i++) {
     SensorFctArray[i].SetInput(); /* turn I/O line as input */
   }
+
   do {
     /*! \todo Be aware that this might block for a long time, if discharging takes long. Consider using a timeout. */
-    cnt = 0;
+	cnt = 0;
+	timerVal = RefCnt_GetCounterValue(timerHandle);
+	if (timerVal>REF_SENSOR_TIMOUT_VAL) {
+		break; /* get out of while loop */
+	}
     for(i=0;i<REF_NOF_SENSORS;i++) {
       if (raw[i]==MAX_SENSOR_VALUE) { /* not measured yet? */
         if (SensorFctArray[i].GetVal()==0) {
-          raw[i] = RefCnt_GetCounterValue(timerHandle);
+          raw[i] = timerVal;
         }
       } else { /* have value */
         cnt++;
@@ -272,7 +283,7 @@ static uint8_t PrintStatus(const CLS1_StdIOType *io) {
   UTIL1_strcat(buf, sizeof(buf), (unsigned char*)"\r\n");
   CLS1_SendStatusStr((unsigned char*)"  min line", buf, io->stdOut);
 
-  UTIL1_Num16uToStr(buf, sizeof(buf), REF_SENSOR_TIMEOUT_US);
+ // UTIL1_Num16uToStr(buf, sizeof(buf), REF_SENSOR_TIMEOUT_US);
   UTIL1_strcat(buf, sizeof(buf), (unsigned char*)" us\r\n");
   CLS1_SendStatusStr((unsigned char*)"  timeout", buf, io->stdOut);
 
@@ -341,6 +352,11 @@ byte REF_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOT
   return ERR_OK;
 }
 
+void REF_SetCalinrationFlag(bool status){
+	CalibrationFlag = status;
+}
+
+
 static void REF_StateMachine(void) {
   int i;
 
@@ -353,8 +369,10 @@ static void REF_StateMachine(void) {
     case REF_STATE_NOT_CALIBRATED:
       REF_MeasureRaw(SensorRaw);
       /*! \todo Add a new event to your event module...*/
-      if (EVNT_EventIsSet(EVNT_REF_START_STOP_CALIBRATION)) {
-        EVNT_ClearEvent(EVNT_REF_START_STOP_CALIBRATION);
+      //if (EVNT_EventIsSet(EVNT_REF_START_STOP_CALIBRATION)) {
+      if (CalibrationFlag) {
+        //EVNT_ClearEvent(EVNT_REF_START_STOP_CALIBRATION);
+    	 REF_SetCalinrationFlag(FALSE);
         refState = REF_STATE_START_CALIBRATION;
         break;
       }
@@ -373,11 +391,13 @@ static void REF_StateMachine(void) {
     case REF_STATE_CALIBRATING:
       REF_CalibrateMinMax(SensorCalibMinMax.minVal, SensorCalibMinMax.maxVal, SensorRaw);
 #if PL_HAS_BUZZER
-      (void)BUZ_Beep(300, 20);
+      //(void)BUZ_Beep(300, 20);
 #endif
-      if (EVNT_EventIsSet(EVNT_REF_START_STOP_CALIBRATION)) {
-        EVNT_ClearEvent(EVNT_REF_START_STOP_CALIBRATION);
-        refState = REF_STATE_STOP_CALIBRATION;
+      //if (EVNT_EventIsSet(EVNT_REF_START_STOP_CALIBRATION)) {
+      if (CalibrationFlag) {
+        //EVNT_ClearEvent(EVNT_REF_START_STOP_CALIBRATION);
+    	  REF_SetCalinrationFlag(FALSE);
+    	  refState = REF_STATE_STOP_CALIBRATION;
       }
       break;
     
@@ -388,8 +408,10 @@ static void REF_StateMachine(void) {
         
     case REF_STATE_READY:
       REF_Measure();
-      if (EVNT_EventIsSet(EVNT_REF_START_STOP_CALIBRATION)) {
-        EVNT_ClearEvent(EVNT_REF_START_STOP_CALIBRATION);
+      //if (EVNT_EventIsSet(EVNT_REF_START_STOP_CALIBRATION)) {
+      if (CalibrationFlag) {
+        //EVNT_ClearEvent(EVNT_REF_START_STOP_CALIBRATION);
+    	  REF_SetCalinrationFlag(FALSE);
         refState = REF_STATE_START_CALIBRATION;
       }
       break;
