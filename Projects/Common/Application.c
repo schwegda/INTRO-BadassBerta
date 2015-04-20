@@ -64,7 +64,9 @@ static void APP_HandleEvents(EVNT_Handle event)
 
 			case EVNT_SW1_LPRESSED:
 				CLS1_SendStr("SW1 long pressed \n", CLS1_GetStdio()->stdOut);
+#if PL_HAS_LINE_SENSOR
 				REF_SetCalinrationFlag(TRUE);
+#endif
 			break;
 
 		    case EVNT_SW1_RELEASED:

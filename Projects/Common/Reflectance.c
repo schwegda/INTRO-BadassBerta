@@ -27,6 +27,8 @@
 #if PL_HAS_BUZZER
   #include "Buzzer.h"
 #endif
+#include "NVM_Config.h"
+
 #define REF_NOF_SENSORS 6 /* number of sensors */
 #define REF_SENSOR1_IS_LEFT   1 /* sensor number one is on the left side */
 #define REF_MIN_LINE_VAL      0x60   /* minimum value indicating a line */
@@ -359,19 +361,24 @@ void REF_SetCalinrationFlag(bool status){
 
 static void REF_StateMachine(void) {
   int i;
-
+  SensorCalibT *local;
   switch (refState) {
     case REF_STATE_INIT:
-      SHELL_SendString((unsigned char*)"INFO: No calibration data present.\r\n");
-      refState = REF_STATE_NOT_CALIBRATED;
+    	local =  NVMC_GetReflectanceData();
+
+    	if(local != NULL){
+    		SensorCalibMinMax = *local;
+			SHELL_SendString((unsigned char*)"data reed from FLASH.\r\n");
+			refState = REF_STATE_READY;
+    	}else{
+    		SHELL_SendString((unsigned char*)"INFO: No calibration data present.\r\n");
+    		refState = REF_STATE_NOT_CALIBRATED;
+    	}
       break;
       
     case REF_STATE_NOT_CALIBRATED:
       REF_MeasureRaw(SensorRaw);
-      /*! \todo Add a new event to your event module...*/
-      //if (EVNT_EventIsSet(EVNT_REF_START_STOP_CALIBRATION)) {
       if (CalibrationFlag) {
-        //EVNT_ClearEvent(EVNT_REF_START_STOP_CALIBRATION);
     	 REF_SetCalinrationFlag(FALSE);
         refState = REF_STATE_START_CALIBRATION;
         break;
@@ -393,9 +400,7 @@ static void REF_StateMachine(void) {
 #if PL_HAS_BUZZER
       //(void)BUZ_Beep(300, 20);
 #endif
-      //if (EVNT_EventIsSet(EVNT_REF_START_STOP_CALIBRATION)) {
       if (CalibrationFlag) {
-        //EVNT_ClearEvent(EVNT_REF_START_STOP_CALIBRATION);
     	  REF_SetCalinrationFlag(FALSE);
     	  refState = REF_STATE_STOP_CALIBRATION;
       }
@@ -403,14 +408,17 @@ static void REF_StateMachine(void) {
     
     case REF_STATE_STOP_CALIBRATION:
       SHELL_SendString((unsigned char*)"...stopping calibration.\r\n");
+#if PL_HAS_LINE_SENSOR
+      if(NVMC_SaveReflectanceData(&SensorCalibMinMax,sizeof(SensorCalibMinMax)) == ERR_OK){
+    	  SHELL_SendString((unsigned char*)"...Data Stored to FLASH\r\n");
+      }
+#endif
       refState = REF_STATE_READY;
       break;
         
     case REF_STATE_READY:
       REF_Measure();
-      //if (EVNT_EventIsSet(EVNT_REF_START_STOP_CALIBRATION)) {
       if (CalibrationFlag) {
-        //EVNT_ClearEvent(EVNT_REF_START_STOP_CALIBRATION);
     	  REF_SetCalinrationFlag(FALSE);
         refState = REF_STATE_START_CALIBRATION;
       }
