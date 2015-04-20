@@ -47,8 +47,9 @@
 	/*! Set to 1 to use Command-Shell over usb CDC*/
 #define PL_HAS_SHELL_QUEUE (1)
 	/*! Set to 1 to use Shell Queue */
-#define PL_HAS_SEMAPHORE 	(1)
+#define PL_HAS_SEMAPHORE 	(0)
 	/*! Set to 1 to use Semaphore */
+
 
 /* if keys are using interrupts or are polled */
 #if PL_IS_FRDM
@@ -91,6 +92,8 @@
 	 /*! Set to 1 to use Bluetooth Communication*/
   #define PL_HAS_LINE_SENSOR (1)
 	 /*! Set to 1 to use the Line Sensors*/
+  #define PL_HAS_MOTOR (1)
+     /*! Set to 1 to use the motors */
 #else
   #error "unknown configuration?"
 #endif
