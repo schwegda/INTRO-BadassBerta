@@ -213,9 +213,8 @@ void RTOSTRC1_OnTraceWrap(void)
 **         finished (except [SetPage]). This event is available only if
 **         an [Interrupt service/event] is selected.
 */
-/* ===================================================================*/
-void IFsh1_OnWriteEnd(void)
-=======
+/*
+** ===================================================================
 **     Event       :  QuadInt_OnInterrupt (module Events)
 **
 **     Component   :  QuadInt [TimerInt]
@@ -229,7 +228,24 @@ void IFsh1_OnWriteEnd(void)
 ** ===================================================================
 */
 void QuadInt_OnInterrupt(void)
->>>>>>> abcaa682a372dcdecfd800454cd4bfe212e8d2df
+{
+  /* Write your code here ... */
+}
+
+/*
+** ===================================================================
+**     Event       :  IFsh1_OnWriteEnd (module Events)
+**
+**     Component   :  IFsh1 [IntFLASH]
+*/
+/*!
+**     @brief
+**         Event is called after a write operation to FLASH memory is
+**         finished (except [SetPage]). This event is available only if
+**         an [Interrupt service/event] is selected.
+*/
+/* ===================================================================*/
+void IFsh1_OnWriteEnd(void)
 {
   /* Write your code here ... */
 }
