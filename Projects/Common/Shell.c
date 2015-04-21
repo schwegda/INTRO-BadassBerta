@@ -27,6 +27,14 @@
 #if PL_HAS_MOTOR
   #include "Motor.h"
 #endif
+#if PL_HAS_QUAD_CALIBRATION
+	#include "QuadCalib.h"
+	#include "Q4CRight.h"
+	#include "Q4CLeft.h"
+#endif
+#if PL_HAS_MCP4728
+  #include "MCP4728.h"
+#endif
 
 /* forward declaration */
 static uint8_t SHELL_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
@@ -47,6 +55,14 @@ static const CLS1_ParseCommandCallback CmdParserTable[] =
 #endif
 #if PL_HAS_MOTOR
   MOT_ParseCommand,
+#endif
+#if PL_HAS_MCP4728
+  MCP4728_ParseCommand,
+#endif
+#if PL_HAS_QUAD_CALIBRATION
+  QUADCALIB_ParseCommand,
+  Q4CRight_ParseCommand,
+  Q4CLeft_ParseCommand,
 #endif
 #endif
   NULL /* Sentinel */

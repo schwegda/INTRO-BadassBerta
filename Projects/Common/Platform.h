@@ -47,7 +47,7 @@
 	/*! Set to 1 to use Command-Shell over usb CDC*/
 #define PL_HAS_SHELL_QUEUE (1)
 	/*! Set to 1 to use Shell Queue */
-#define PL_HAS_SEMAPHORE 	(0)
+#define PL_HAS_SEMAPHORE 	(1)
 	/*! Set to 1 to use Semaphore */
 #define PL_HAS_CONFIG_NVM 	(1)
 	/*! Set when using internal FLASH to store settings */
@@ -84,18 +84,24 @@
 #endif
   #endif
 #elif PL_IS_ROBO
-  #define PL_HAS_BUZZER 	(1)
+  	#define PL_HAS_BUZZER 	(1)
   	  /*!< We have one Buzzer on the Robot Baseboard */
-  #define PL_NOF_LEDS       (2)
+  	#define PL_NOF_LEDS       (2)
      /*!< We have up to 2 LED's on the robo board */
-  #define PL_NOF_KEYS       (1)
+  	#define PL_NOF_KEYS       (1)
      /*!< We have up to 1 push button */
-  #define PL_HAS_BLUETOOTH 	(1)
+  	#define PL_HAS_BLUETOOTH 	(1)
 	 /*! Set to 1 to use Bluetooth Communication*/
-  #define PL_HAS_LINE_SENSOR (1)
+  	#define PL_HAS_LINE_SENSOR (1)
 	 /*! Set to 1 to use the Line Sensors*/
-  #define PL_HAS_MOTOR (1)
+  	#define PL_HAS_MOTOR (1)
      /*! Set to 1 to use the motors */
+	#define PL_IS_INTRO_ZUMO_K22_V2 (1)
+	/*! Set to 1 if use the old Zumo platform*/
+	#define PL_HAS_QUAD_CALIBRATION (1)
+	 /*! Set to 1 to use the quad Counter Calibration */
+	#define PL_HAS_MCP4728 (1)
+	 /*! Set to 1 to use the MCP4728*/
 #else
   #error "unknown configuration?"
 #endif

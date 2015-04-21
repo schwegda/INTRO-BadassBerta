@@ -44,6 +44,7 @@
 #include "Reflectance.h"
 #include "IFsh1.h"
 #include "Motor.h"
+#include "MCP4728.h"
 
 void PL_Init(void)
 {
@@ -79,6 +80,10 @@ void PL_Init(void)
 #if PL_HAS_MOTOR
   MOT_Init();
 #endif
+#if PL_HAS_MCP4728
+  MCP4728_Init();
+#endif
+
 }
 
 void PL_Deinit(void)
