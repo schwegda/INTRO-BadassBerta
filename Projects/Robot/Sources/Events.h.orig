@@ -1,5 +1,5 @@
 /* ###################################################################
-**     Filename    : Events.c
+**     Filename    : Events.h
 **     Project     : Robot
 **     Processor   : MK22FX512VLQ12
 **     Component   : Events
@@ -15,7 +15,7 @@
 **
 ** ###################################################################*/
 /*!
-** @file Events.c
+** @file Events.h
 ** @version 01.00
 ** @brief
 **         This is user's event module.
@@ -25,20 +25,91 @@
 **  @addtogroup Events_module Events module documentation
 **  @{
 */         
+
+#ifndef __Events_H
+#define __Events_H
 /* MODULE Events */
 
-#include "Cpu.h"
-#include "Events.h"
-#include "../../Common/Platform.h"
-#include "../../Common/Timer.h"
-#include "../../Common/Keys.h"
+#include "PE_Types.h"
+#include "PE_Error.h"
+#include "PE_Const.h"
+#include "IO_Map.h"
+#include "LED_2.h"
+#include "LED_2.h"
+#include "LEDpin1.h"
+#include "BitIoLdd1.h"
+#include "LED_1.h"
+#include "LED_1.h"
+#include "LEDpin2.h"
+#include "BitIoLdd2.h"
+#include "WAIT1.h"
+#include "CS1.h"
+#include "Buzzer_PE.h"
+#include "BitIoLdd3.h"
+#include "SW1.h"
+#include "ExtIntLdd1.h"
+#include "CLS1.h"
+#include "BT1.h"
+#include "Serial1.h"
+#include "ASerialLdd1.h"
+#include "UTIL1.h"
+#include "FRTOS1.h"
+#include "RTOSTRC1.h"
+#include "USB1.h"
+#include "USB0.h"
+#include "CDC1.h"
+#include "Tx1.h"
+#include "Rx1.h"
+#include "HF1.h"
+#include "LED_IR.h"
+#include "LEDpin3.h"
+#include "BitIoLdd5.h"
+#include "RefCnt.h"
+#include "IR1.h"
+#include "BitIoLdd6.h"
+#include "IR2.h"
+#include "BitIoLdd7.h"
+#include "IR3.h"
+#include "BitIoLdd8.h"
+#include "IR4.h"
+#include "BitIoLdd9.h"
+#include "IR5.h"
+#include "BitIoLdd10.h"
+#include "IR6.h"
+#include "BitIoLdd11.h"
+#include "MOTTU.h"
+#include "DIRL.h"
+#include "BitIoLdd12.h"
+#include "PWMR.h"
+#include "PwmLdd1.h"
+#include "DIRR.h"
+#include "BitIoLdd13.h"
+#include "PWML.h"
+#include "PwmLdd2.h"
+#include "TU_MCP4728.h"
+#include "MCP4728_LDAC.h"
+#include "BitIoLdd14.h"
+#include "MCP4728_RDY.h"
+#include "BitIoLdd15.h"
+#include "Q4CLeft.h"
+#include "C11.h"
+#include "BitIoLdd16.h"
+#include "C21.h"
+#include "BitIoLdd17.h"
+#include "Q4CRight.h"
+#include "C12.h"
+#include "BitIoLdd19.h"
+#include "C23.h"
+#include "BitIoLdd20.h"
+#include "QuadInt.h"
+#include "TimerIntLdd2.h"
+#include "TU_QuadInt.h"
+#include "IFsh1.h"
+#include "IntFlashLdd1.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif 
-
-
-/* User includes (#include below this line is not maintained by Processor Expert) */
 
 /*
 ** ===================================================================
@@ -53,11 +124,10 @@ extern "C" {
 **         interrupt] property is set to 'Enabled'.
 */
 /* ===================================================================*/
-void Cpu_OnNMIINT(void)
-{
-  /* Write your code here ... */
-}
+void Cpu_OnNMIINT(void);
 
+
+void SW1_OnInterrupt(void);
 /*
 ** ===================================================================
 **     Event       :  SW1_OnInterrupt (module Events)
@@ -70,25 +140,8 @@ void Cpu_OnNMIINT(void)
 **     Returns     : Nothing
 ** ===================================================================
 */
-void SW1_OnInterrupt(void)
-{
-	/*! Damit Heartbeat nicht von diesem Interrupt unterbrochen wird*/
-	/*! \todo Abfrage ob Pin tatsächlich auf 1 ist nicht mehr machen? */
 
-	/*
-	if (PORT_PDD_GetPinInterruptFlag(PORTA_BASE_PTR, ExtIntLdd1_PIN_INDEX))
-	  {
-	     PORT_PDD_ClearPinInterruptFlag(PORTA_BASE_PTR, ExtIntLdd1_PIN_INDEX);
-	     KEY_OnInterrupt(KEY_BTN1);
-	  }
-	  */
-#if PL_HAS_KBI
-  if (KEY1_Get()) {
-    KEY_OnInterrupt(KEY_BTN1);
-  }
-#endif
-}
-
+void FRTOS1_vApplicationStackOverflowHook(xTaskHandle pxTask, char *pcTaskName);
 /*
 ** ===================================================================
 **     Event       :  FRTOS1_vApplicationStackOverflowHook (module Events)
@@ -104,19 +157,8 @@ void SW1_OnInterrupt(void)
 **     Returns     : Nothing
 ** ===================================================================
 */
-void FRTOS1_vApplicationStackOverflowHook(xTaskHandle pxTask, char *pcTaskName)
-{
-  /* This will get called if a stack overflow is detected during the context
-     switch.  Set configCHECK_FOR_STACK_OVERFLOWS to 2 to also check for stack
-     problems within nested interrupts, but only do this for debug purposes as
-     it will increase the context switch time. */
-  (void)pxTask;
-  (void)pcTaskName;
-  taskDISABLE_INTERRUPTS();
-  /* Write your code here ... */
-  for(;;) {}
-}
 
+void FRTOS1_vApplicationTickHook(void);
 /*
 ** ===================================================================
 **     Event       :  FRTOS1_vApplicationTickHook (module Events)
@@ -129,15 +171,8 @@ void FRTOS1_vApplicationStackOverflowHook(xTaskHandle pxTask, char *pcTaskName)
 **     Returns     : Nothing
 ** ===================================================================
 */
-void FRTOS1_vApplicationTickHook(void)
-{
-  /* Called for every RTOS tick. */
-	  /* Write your code here ... */
-	#if PL_HAS_TIMER
-		TMR_OnInterrupt();
-	#endif
-}
 
+void FRTOS1_vApplicationIdleHook(void);
 /*
 ** ===================================================================
 **     Event       :  FRTOS1_vApplicationIdleHook (module Events)
@@ -150,13 +185,8 @@ void FRTOS1_vApplicationTickHook(void)
 **     Returns     : Nothing
 ** ===================================================================
 */
-void FRTOS1_vApplicationIdleHook(void)
-{
-  /* Called whenever the RTOS is idle (from the IDLE task).
-     Here would be a good place to put the CPU into low power mode. */
-  /* Write your code here ... */
-}
 
+void FRTOS1_vApplicationMallocFailedHook(void);
 /*
 ** ===================================================================
 **     Event       :  FRTOS1_vApplicationMallocFailedHook (module Events)
@@ -169,18 +199,8 @@ void FRTOS1_vApplicationIdleHook(void)
 **     Returns     : Nothing
 ** ===================================================================
 */
-void FRTOS1_vApplicationMallocFailedHook(void)
-{
-  /* Called if a call to pvPortMalloc() fails because there is insufficient
-     free memory available in the FreeRTOS heap.  pvPortMalloc() is called
-     internally by FreeRTOS API functions that create tasks, queues, software
-     timers, and semaphores.  The size of the FreeRTOS heap is set by the
-     configTOTAL_HEAP_SIZE configuration constant in FreeRTOSConfig.h. */
-  taskDISABLE_INTERRUPTS();
-  /* Write your code here ... */
-  for(;;) {}
-}
 
+void RTOSTRC1_OnTraceWrap(void);
 /*
 ** ===================================================================
 **     Event       :  RTOSTRC1_OnTraceWrap (module Events)
@@ -193,29 +213,9 @@ void FRTOS1_vApplicationMallocFailedHook(void)
 **     Returns     : Nothing
 ** ===================================================================
 */
-void RTOSTRC1_OnTraceWrap(void)
-{
-	  uint8_t buf[64];
-
-	  RTOSTRC1_vGetGDBDumpCommand(buf, sizeof(buf), "c:\\tmp\\trc.dump");
-}
 
 /*
 ** ===================================================================
-<<<<<<< HEAD
-**     Event       :  IFsh1_OnWriteEnd (module Events)
-**
-**     Component   :  IFsh1 [IntFLASH]
-*/
-/*!
-**     @brief
-**         Event is called after a write operation to FLASH memory is
-**         finished (except [SetPage]). This event is available only if
-**         an [Interrupt service/event] is selected.
-*/
-/* ===================================================================*/
-void IFsh1_OnWriteEnd(void)
-=======
 **     Event       :  QuadInt_OnInterrupt (module Events)
 **
 **     Component   :  QuadInt [TimerInt]
@@ -228,11 +228,22 @@ void IFsh1_OnWriteEnd(void)
 **     Returns     : Nothing
 ** ===================================================================
 */
-void QuadInt_OnInterrupt(void)
->>>>>>> abcaa682a372dcdecfd800454cd4bfe212e8d2df
-{
-  /* Write your code here ... */
-}
+void QuadInt_OnInterrupt(void);
+
+/*
+** ===================================================================
+**     Event       :  IFsh1_OnWriteEnd (module Events)
+**
+**     Component   :  IFsh1 [IntFLASH]
+*/
+/*!
+**     @brief
+**         Event is called after a write operation to FLASH memory is
+**         finished (except [SetPage]). This event is available only if
+**         an [Interrupt service/event] is selected.
+*/
+/* ===================================================================*/
+void IFsh1_OnWriteEnd(void);
 
 /* END Events */
 
@@ -240,6 +251,8 @@ void QuadInt_OnInterrupt(void)
 }  /* extern "C" */
 #endif 
 
+#endif 
+/* ifndef __Events_H*/
 /*!
 ** @}
 */
