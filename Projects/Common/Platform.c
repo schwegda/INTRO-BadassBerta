@@ -43,6 +43,7 @@
 #include "Sem.h"
 #include "Reflectance.h"
 #include "IFsh1.h"
+#include "Motor.h"
 
 void PL_Init(void)
 {
@@ -74,6 +75,9 @@ void PL_Init(void)
 #endif
 #if PL_HAS_CONFIG_NVM
   IFsh1_Init();
+#endif
+#if PL_HAS_MOTOR
+  MOT_Init();
 #endif
 }
 

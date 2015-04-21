@@ -202,6 +202,7 @@ void RTOSTRC1_OnTraceWrap(void)
 
 /*
 ** ===================================================================
+<<<<<<< HEAD
 **     Event       :  IFsh1_OnWriteEnd (module Events)
 **
 **     Component   :  IFsh1 [IntFLASH]
@@ -214,6 +215,21 @@ void RTOSTRC1_OnTraceWrap(void)
 */
 /* ===================================================================*/
 void IFsh1_OnWriteEnd(void)
+=======
+**     Event       :  QuadInt_OnInterrupt (module Events)
+**
+**     Component   :  QuadInt [TimerInt]
+**     Description :
+**         When a timer interrupt occurs this event is called (only
+**         when the component is enabled - <Enable> and the events are
+**         enabled - <EnableEvent>). This event is enabled only if a
+**         <interrupt service/event> is enabled.
+**     Parameters  : None
+**     Returns     : Nothing
+** ===================================================================
+*/
+void QuadInt_OnInterrupt(void)
+>>>>>>> abcaa682a372dcdecfd800454cd4bfe212e8d2df
 {
   /* Write your code here ... */
 }
