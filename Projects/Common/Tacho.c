@@ -18,11 +18,11 @@
 #include "FRTOS1.h"
 
   /*! \todo Set appropriate values for NOF_ROUND_PULSE, TACHO_SAMPLE_PERIOD_MS and NOF_HISTORY */
-#define NOF_ROUND_PULSE      (1)
+#define NOF_ROUND_PULSE      (12*75)
   /*!< \todo number of pulses per round, given by encoder hardware, and we are detecting 4 steps for each period. Useful to calculate revolutions per time unit. */
-#define TACHO_SAMPLE_PERIOD_MS (1)
+#define TACHO_SAMPLE_PERIOD_MS (5)
   /*!< \todo speed sample period in ms. Make sure that speed is sampled at the given rate. */
-#define NOF_HISTORY (10)
+#define NOF_HISTORY (16U+1U)
   /*!< number of samples for speed calculation (>0):the more, the better, but the slower. */
 
 static volatile uint16_t TACHO_LeftPosHistory[NOF_HISTORY], TACHO_RightPosHistory[NOF_HISTORY];

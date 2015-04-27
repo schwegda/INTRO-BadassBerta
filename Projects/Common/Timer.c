@@ -11,6 +11,10 @@
 #include "Event.h"
 #include "Trigger.h"
 
+#if PL_HAS_MOTOR_TACHO
+	#include "Tacho.h"
+#endif
+
 void TMR_OnInterrupt(void)
 {
 	/* this method gets called from TimerInt(TI1) */
@@ -26,6 +30,11 @@ void TMR_OnInterrupt(void)
 #if PL_HAS_TRIGGER
 	TRG_IncTick();
 #endif
+
+#if PL_HAS_MOTOR_TACHO
+	TACHO_Sample();
+#endif
+
 }
 
 void TMR_Init(void)
