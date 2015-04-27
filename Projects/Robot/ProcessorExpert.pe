@@ -3,7 +3,7 @@
   <Header>
     <Name>Robot</Name>
     <SavedBy>David Schwegler</SavedBy>
-    <ModificationStamp>78</ModificationStamp>
+    <ModificationStamp>80</ModificationStamp>
     <Date>2015-04-21</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.10.1.RT6_b1444-1070</PEversion>
@@ -25222,7 +25222,7 @@
         <ItemSymbol>CustomPortGroup</ItemSymbol>
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
-        <Expanded>true</Expanded>
+        <Expanded>false</Expanded>
       </ItemState>
       <ItemState>
         <ItemSymbol>configCOMPILER</ItemSymbol>
@@ -27062,7 +27062,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>1</Value>
+        <Value>5</Value>
         <Base>DEC</Base>
       </ItemState>
       <ItemState>
@@ -27589,7 +27589,7 @@
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
         <Value>false</Value>
-        <Expanded>false</Expanded>
+        <Expanded>true</Expanded>
       </ItemState>
       <ItemState>
         <ItemSymbol>GenerateRTOSPExMacros</ItemSymbol>
@@ -51778,7 +51778,7 @@
         <ReadOnly>false</ReadOnly>
         <UserReadOnly>false</UserReadOnly>
         <PropertyModelIsAutomatic>false</PropertyModelIsAutomatic>
-        <Value>medium priority</Value>
+        <Value>3</Value>
       </ItemState>
       <ItemState>
         <ItemSymbol>DSPgrp</ItemSymbol>
