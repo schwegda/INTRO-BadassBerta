@@ -35,6 +35,9 @@
 #if PL_HAS_MCP4728
   #include "MCP4728.h"
 #endif
+#if PL_HAS_MOTOR_TACHO
+  #include "Tacho.h"
+#endif
 
 /* forward declaration */
 static uint8_t SHELL_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
@@ -63,6 +66,9 @@ static const CLS1_ParseCommandCallback CmdParserTable[] =
   QUADCALIB_ParseCommand,
   Q4CRight_ParseCommand,
   Q4CLeft_ParseCommand,
+#endif
+#if PL_HAS_MOTOR_TACHO
+  TACHO_ParseCommand,
 #endif
 #endif
   NULL /* Sentinel */

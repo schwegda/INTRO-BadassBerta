@@ -2,9 +2,9 @@
 <PEproject>
   <Header>
     <Name>Robot</Name>
-    <SavedBy>David Schwegler</SavedBy>
-    <ModificationStamp>80</ModificationStamp>
-    <Date>2015-04-21</Date>
+    <SavedBy>Alexander</SavedBy>
+    <ModificationStamp>83</ModificationStamp>
+    <Date>2015-04-27</Date>
     <IDE>Eclipse IDE</IDE>
     <PEversion>1.10.1.RT6_b1444-1070</PEversion>
   </Header>
@@ -16742,7 +16742,7 @@
     <UserFolderName />
     <Comment lines_count="0" />
     <Template />
-    <BeanVersion>01.071</BeanVersion>
+    <BeanVersion>01.065</BeanVersion>
     <LightErrorsIgnored>false</LightErrorsIgnored>
     <Properties>
       <ItemState>
@@ -24542,7 +24542,7 @@
     <UserFolderName />
     <Comment lines_count="0" />
     <Template />
-    <BeanVersion>01.109</BeanVersion>
+    <BeanVersion>01.106</BeanVersion>
     <LightErrorsIgnored>false</LightErrorsIgnored>
     <Properties>
       <ItemState>
@@ -25203,7 +25203,7 @@
     <UserFolderName />
     <Comment lines_count="0" />
     <Template />
-    <BeanVersion>01.411</BeanVersion>
+    <BeanVersion>01.402</BeanVersion>
     <LightErrorsIgnored>false</LightErrorsIgnored>
     <Properties>
       <ItemState>
@@ -28886,7 +28886,7 @@
     <UserFolderName />
     <Comment lines_count="0" />
     <Template />
-    <BeanVersion>01.034</BeanVersion>
+    <BeanVersion>01.033</BeanVersion>
     <LightErrorsIgnored>false</LightErrorsIgnored>
     <Properties>
       <ItemState>
@@ -28977,7 +28977,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>DividerInputFreq</ItemSymbol>
-              <Value>120 MHz</Value>
+              <Value>unknown</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>DividerClockFraction</ItemSymbol>
@@ -29007,7 +29007,7 @@
             </ItemState>
             <ItemState>
               <ItemSymbol>ModuleClockFreq</ItemSymbol>
-              <Value>48 MHz</Value>
+              <Value>unknown</Value>
             </ItemState>
             <ItemState>
               <ItemSymbol>PullUpDownGrp</ItemSymbol>
@@ -30420,7 +30420,7 @@
           <UserFolderName />
           <Comment lines_count="0" />
           <Template />
-          <BeanVersion>01.045</BeanVersion>
+          <BeanVersion>01.043</BeanVersion>
           <LightErrorsIgnored>false</LightErrorsIgnored>
           <Properties>
             <ItemState>
@@ -30517,7 +30517,7 @@
                 <UserFolderName />
                 <Comment lines_count="0" />
                 <Template />
-                <BeanVersion>01.037</BeanVersion>
+                <BeanVersion>01.033</BeanVersion>
                 <LightErrorsIgnored>false</LightErrorsIgnored>
                 <Properties>
                   <ItemState>
@@ -30765,7 +30765,7 @@
                 <UserFolderName />
                 <Comment lines_count="0" />
                 <Template />
-                <BeanVersion>01.037</BeanVersion>
+                <BeanVersion>01.033</BeanVersion>
                 <LightErrorsIgnored>false</LightErrorsIgnored>
                 <Properties>
                   <ItemState>

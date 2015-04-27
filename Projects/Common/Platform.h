@@ -102,6 +102,8 @@
 	 /*! Set to 1 to use the quad Counter Calibration */
 	#define PL_HAS_MCP4728 (1)
 	 /*! Set to 1 to use the MCP4728*/
+	#define PL_HAS_MOTOR_TACHO  (1)
+	 /*! Set to 1 to use the Tacho*/
 #else
   #error "unknown configuration?"
 #endif
