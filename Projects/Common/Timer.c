@@ -10,14 +10,17 @@
 #include "Timer.h"
 #include "Event.h"
 #include "Trigger.h"
-
+#if PL_HAS_PID
+	#include "Pid.h"
+	#include "Motor.h"
+#endif
 #if PL_HAS_MOTOR_TACHO
 	#include "Tacho.h"
 #endif
 
 void TMR_OnInterrupt(void)
 {
-	/* this method gets called from TimerInt(TI1) */
+	/* this method gets called from FRROS1 Tick Hock interrupt */
 	static int cntr=0;
 	cntr++;
 

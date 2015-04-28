@@ -104,6 +104,10 @@
 	 /*! Set to 1 to use the MCP4728*/
 	#define PL_HAS_MOTOR_TACHO  (1)
 	 /*! Set to 1 to use the Tacho*/
+	#define PL_HAS_DRIVE	(1)
+	/*! Set to 1 to use the PID-Conroller*/
+	#define PL_HAS_PID	(1)
+	/*! Set to 1 to use the PID-Conroller*/
 #else
   #error "unknown configuration?"
 #endif

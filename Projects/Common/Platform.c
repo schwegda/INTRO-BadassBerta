@@ -45,6 +45,9 @@
 #include "IFsh1.h"
 #include "Motor.h"
 #include "MCP4728.h"
+#include "Pid.h"
+#include "Tacho.h"
+#include "Drive.h"
 
 void PL_Init(void)
 {
@@ -82,6 +85,15 @@ void PL_Init(void)
 #endif
 #if PL_HAS_MCP4728
   MCP4728_Init();
+#endif
+#if PL_HAS_MOTOR_TACHO
+  TACHO_Init();
+#endif
+#if PL_HAS_PID
+  PID_Init();
+#endif
+#if PL_HAS_DRIVE
+  DRV_Init();
 #endif
 
 }
