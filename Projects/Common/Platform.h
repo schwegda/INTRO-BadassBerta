@@ -12,6 +12,8 @@
 #ifndef PLATFORM_H_
 #define PLATFORM_H_
 
+#define ZUMO_IN_BATTLE_MODE (0)	/*Set to 1 for Zumo Battle
+
 /* List of supported platforms. The PL_BOARD_IS_xxx is defined in the compiler command line settings.  */
 #define PL_IS_FRDM   (defined(PL_BOARD_IS_FRDM))
   /*!< Macro is defined through compiler option for the FRDM board */

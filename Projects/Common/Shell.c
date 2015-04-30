@@ -43,6 +43,7 @@
 #endif
 #if PL_HAS_PID
 	#include "Pid.h"
+	#include "Zumo.h"
 #endif
 
 /* forward declaration */
@@ -82,6 +83,7 @@ static const CLS1_ParseCommandCallback CmdParserTable[] =
 #endif
 #if PL_HAS_PID
   PID_ParseCommand,
+  ZUMO_ParseCommand,
 #endif
 
   NULL /* Sentinel */
