@@ -49,6 +49,7 @@
 #include "Tacho.h"
 #include "Drive.h"
 #include "Zumo.h"
+#include "Ultrasonic.h"
 
 void PL_Init(void)
 {
@@ -99,7 +100,12 @@ void PL_Init(void)
 #if ZUMO_IN_BATTLE_MODE
   ZUMO_Init();
 #endif
-
+#if PL_HAS_ACCEL
+  ACCEL_Init();
+#endif
+#if PL_HAS_ULTRASONIC
+  US_Init();
+#endif
 }
 
 void PL_Deinit(void)

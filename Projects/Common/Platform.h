@@ -107,9 +107,11 @@
 	#define PL_HAS_MOTOR_TACHO  (1)
 	 /*! Set to 1 to use the Tacho*/
 	#define PL_HAS_DRIVE	(1)
-	/*! Set to 1 to use the PID-Conroller*/
+	/*! Set to 1 if Robot has Motors*/
 	#define PL_HAS_PID	(1)
 	/*! Set to 1 to use the PID-Conroller*/
+	#define PL_HAS_ACCEL (0)
+	#define PL_HAS_ULTRASONIC	(1)
 #else
   #error "unknown configuration?"
 #endif

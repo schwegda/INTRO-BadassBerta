@@ -100,7 +100,7 @@ void ZUMO_Init(void) {
   if (FRTOS1_xTaskCreate(
         Zumo_Task,  /* pointer to the task */
         "Zumo", /* task name for kernel awareness debugging */
-        configMINIMAL_STACK_SIZE+300, /* task stack size */
+        configMINIMAL_STACK_SIZE+100, /* task stack size */
         (void*)NULL, /* optional task startup argument */
         tskIDLE_PRIORITY+2,  /* initial priority */
         (xTaskHandle*)NULL /* optional task handle to create */

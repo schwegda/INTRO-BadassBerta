@@ -45,6 +45,8 @@
 	#include "Pid.h"
 	#include "Zumo.h"
 #endif
+#include "MMA1.h"
+#include "Ultrasonic.h"
 
 /* forward declaration */
 static uint8_t SHELL_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
@@ -85,7 +87,12 @@ static const CLS1_ParseCommandCallback CmdParserTable[] =
   PID_ParseCommand,
   ZUMO_ParseCommand,
 #endif
-
+#if PL_HAS_ULTRASONIC
+  US_ParseCommand,
+#endif
+#if PL_HAS_ACCEL
+  MMA1_ParseCommand,
+#endif
   NULL /* Sentinel */
 };
 

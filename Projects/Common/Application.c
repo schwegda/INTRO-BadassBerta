@@ -33,6 +33,7 @@
 #if configUSE_TRACE_HOOKS
   #include "RTOSTRC1.h"
 #endif
+#include "Accel.h"
 
 /*!
  * \brief Application event handler
@@ -123,6 +124,7 @@ static void APP_HandleEvents(EVNT_Handle event)
  */
 static void APP_Task(void)
 {
+	//ACCEL_LowLevelInit();			/*to start up acceleration sensor
 	EVNT_SetEvent(EVNT_STARTUP);	/* set startup event */
 	for(;;){
 		EVNT_HandleEvent(APP_HandleEvents);
