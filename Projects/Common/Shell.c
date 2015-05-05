@@ -47,6 +47,7 @@
 #endif
 #include "MMA1.h"
 #include "Ultrasonic.h"
+#include "RNET1.h"
 
 /* forward declaration */
 static uint8_t SHELL_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
@@ -92,6 +93,9 @@ static const CLS1_ParseCommandCallback CmdParserTable[] =
 #endif
 #if PL_HAS_ACCEL
   MMA1_ParseCommand,
+#endif
+#if PL_HAS_RADIO
+  RNET1_ParseCommand,
 #endif
   NULL /* Sentinel */
 };

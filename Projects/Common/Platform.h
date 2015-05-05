@@ -12,7 +12,7 @@
 #ifndef PLATFORM_H_
 #define PLATFORM_H_
 
-#define ZUMO_IN_BATTLE_MODE (0)	/*Set to 1 for Zumo Battle
+#define ZUMO_IN_BATTLE_MODE (1)	/*Set to 1 for Zumo Battle
 
 /* List of supported platforms. The PL_BOARD_IS_xxx is defined in the compiler command line settings.  */
 #define PL_IS_FRDM   (defined(PL_BOARD_IS_FRDM))
@@ -53,6 +53,9 @@
 	/*! Set to 1 to use Semaphore */
 #define PL_HAS_CONFIG_NVM 	(1)
 	/*! Set when using internal FLASH to store settings */
+#define PL_HAS_ACCEL (1)
+
+#define PL_HAS_RADIO (1)
 
 
 /* if keys are using interrupts or are polled */
@@ -110,7 +113,6 @@
 	/*! Set to 1 if Robot has Motors*/
 	#define PL_HAS_PID	(1)
 	/*! Set to 1 to use the PID-Conroller*/
-	#define PL_HAS_ACCEL (0)
 	#define PL_HAS_ULTRASONIC	(1)
 #else
   #error "unknown configuration?"

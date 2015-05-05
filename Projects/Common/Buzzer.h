@@ -1,35 +1,43 @@
-/*
- * Buzzer.h
+/**
+ * \file
+ * \brief Buzzer driver interface.
+ * \author Erich Styger, erich.styger@hslu.ch
  *
- *  Created on: 16.03.2015
- *      Author: Alexander
+ * This is the interface to the buzzer.
  */
-/*!
-**  @addtogroup Buzzer_module Buzzer module documentation
-**  @{
-*/
-/* MODULE Buzzer */
+
 #ifndef BUZZER_H_
 #define BUZZER_H_
-#include "Platform.h"
 
-#if PL_HAS_BUZZER >= 1
-  #include "Buzzer_PE.h"
-  #define Buzzer_On() Buzzer_PE_SetVal()
-  #define Buzzer_Off() Buzzer_PE_ClrVal()
-  #define Buzzer_GetValue() Buzzer_PE_GetVal()
-  #define Buzzer_Negate() Buzzer_PE_NegVal()
+#if PL_HAS_SHELL
+  #include "CLS1.h"
 
-#else
-  #define Buzzer_On() 		/* do nothing */
-  #define Buzzer_Off() 		/* do nothing */
-  #define Buzzer_GetValue() /* do nothing */
-  #define Buzzer_Negate() 	/* do nothing */
+/*!
+ * \brief Shell parser routine.
+ * \param cmd Pointer to command line string.
+ * \param handled Pointer to status if command has been handled. Set to TRUE if command was understood.
+ * \param io Pointer to stdio handle
+ * \return Error code, ERR_OK if everything was ok.
+ */
+  uint8_t BUZ_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_StdIOType *io);
 #endif
 
-static void beep_Off();
-void beep(uint16_t ms);
+/*!
+ * \brief Let the buzzer sound for a specified time.
+ * \param freqHz Frequency of the sound. Ignored if the buzzer is not supporting it.
+ * \param durationMs Duration in milliseconds.
+ * \return Error code, ERR_OK if everything is fine.
+ */
+uint8_t BUZ_Beep(uint16_t freqHz, uint16_t durationMs);
+
+/*!
+ * \brief Initialization of the driver
+ */
+void BUZ_Init(void);
+
+/*!
+ * \brief De-initialization of the driver
+ */
+void BUZ_Deinit(void);
 
 #endif /* BUZZER_H_ */
-/*@}
- */

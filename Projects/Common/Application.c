@@ -28,6 +28,7 @@
 #include "Trigger.h"
 #include "KeyDebounce.h"
 #include "RTOS.h"
+#include "Shell.h"
 #include "ShellQueue.h"
 #include "Reflectance.h"
 #if configUSE_TRACE_HOOKS
@@ -44,13 +45,11 @@ static void APP_HandleEvents(EVNT_Handle event)
 	switch(event){
 		case EVNT_STARTUP:
 			LED1_On();
-			WAIT1_Waitms(50);
+			WAIT1_WaitOSms(50);
 			LED1_Off();
-			for(int i=0;i<30;i++)
-			{
-				Buzzer_Negate();
-				WAIT1_Waitms(5);
-			}
+#if PL_HAS_BUZZER
+				BUZ_Beep(300, 500);
+#endif
 			break;
 
 		case EVNT_LED_HEARTBEAT:
@@ -77,39 +76,37 @@ static void APP_HandleEvents(EVNT_Handle event)
 
 		#if PL_NOF_KEYS >= 2
 			case EVNT_SW2_PRESSED:
-				LED2_Neg();
-			  //CLS1_SendStr("SW2\r\n", CLS1_GetStdio()->stdOut);
+			  CLS1_SendStr("SW2\r\n", CLS1_GetStdio()->stdOut);
 			  break;
 		#endif
 
 		#if PL_NOF_KEYS >= 3
 			case EVNT_SW3_PRESSED:
-				LED3_Neg();
-			  //CLS1_SendStr("SW3\r\n", CLS1_GetStdio()->stdOut);
+			  CLS1_SendStr("SW3\r\n", CLS1_GetStdio()->stdOut);
 			  break;
 		#endif
 
 		#if PL_NOF_KEYS >= 4
 			case EVNT_SW4_PRESSED:
-			  //CLS1_SendStr("SW4\r\n", CLS1_GetStdio()->stdOut);
+			  CLS1_SendStr("SW4\r\n", CLS1_GetStdio()->stdOut);
 			  break;
 		#endif
 
 		#if PL_NOF_KEYS >= 5
 			case EVNT_SW5_PRESSED:
-			  //CLS1_SendStr("SW5\r\n", CLS1_GetStdio()->stdOut);
+			  CLS1_SendStr("SW5\r\n", CLS1_GetStdio()->stdOut);
 			  break;
 		#endif
 
 		#if PL_NOF_KEYS >= 6
 			case EVNT_SW6_PRESSED:
-			  //CLS1_SendStr("SW6\r\n", CLS1_GetStdio()->stdOut);
+			  CLS1_SendStr("SW6\r\n", CLS1_GetStdio()->stdOut);
 			  break;
 		#endif
 
 		#if PL_NOF_KEYS >= 7
 			case EVNT_SW7_PRESSED:
-			  //CLS1_SendStr("SW7\r\n", CLS1_GetStdio()->stdOut);
+			  CLS1_SendStr("SW7\r\n", CLS1_GetStdio()->stdOut);
 			  break;
 		#endif
 
@@ -118,6 +115,12 @@ static void APP_HandleEvents(EVNT_Handle event)
 	}
 }
 
+
+void APP_DebugPrint(unsigned char *str) {
+#if PL_HAS_SHELL
+  SHELL_SendString(str);
+#endif
+}
 
 /*!
  * \brief Application main 'task'.
@@ -143,7 +146,6 @@ void run_tasks(void){
 void initApplication()
 {
 	PL_Init();
-	//CLS1_SendStr("Hello I'am BadassBerta and I'm going to destroy you!\n",CLS1_GetStdio()->stdOut);
 	SQUEUE_Init();
 	RTOS_Init();
 

@@ -50,6 +50,8 @@
 #include "Drive.h"
 #include "Zumo.h"
 #include "Ultrasonic.h"
+#include "RNET1.h"
+#include "Accel.h"
 
 void PL_Init(void)
 {
@@ -97,7 +99,7 @@ void PL_Init(void)
 #if PL_HAS_DRIVE
   DRV_Init();
 #endif
-#if ZUMO_IN_BATTLE_MODE
+#if ZUMO_IN_BATTLE_MODE && PL_IS_ROBO
   ZUMO_Init();
 #endif
 #if PL_HAS_ACCEL
@@ -105,6 +107,9 @@ void PL_Init(void)
 #endif
 #if PL_HAS_ULTRASONIC
   US_Init();
+#endif
+#if PL_HAS_RADIO
+  RNET1_Init();
 #endif
 }
 

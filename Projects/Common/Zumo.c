@@ -12,6 +12,7 @@
 #include "Reflectance.h"
 #include "WAIT1.h"
 
+#if PL_IS_ROBO
 
 typedef enum{
 	ZUMO_STATE_IDLE,
@@ -26,30 +27,36 @@ static bool battleDisabled = TRUE;
 static portTASK_FUNCTION(Zumo_Task, pvParameters) {
 	(void)pvParameters; /* parameter not used */
 
-	if(!battleDisabled){
+	for(;;){
 
-		uint16 val;
 
-		switch(currentState){
-		case ZUMO_STATE_IDLE:
-			currentState = ZUMO_STATE_START;
-			break;
-		case ZUMO_STATE_START:
-			DRV_SetSpeed(0x1000,0x1000);
-			currentState = ZUMO_STATE_LINEDETECTION;
-			break;
-		case ZUMO_STATE_LINEDETECTION:
-			val = REF_GetLineValue();
-			if(val > 500){
-				DRV_SetSpeed(0x000,0x000);
+		if(!battleDisabled){
+				uint16 val;
+
+				switch(currentState){
+				case ZUMO_STATE_IDLE:
+					currentState = ZUMO_STATE_START;
+					break;
+				case ZUMO_STATE_START:
+					DRV_SetSpeed(0x1000,0x1000);
+					currentState = ZUMO_STATE_LINEDETECTION;
+					break;
+				case ZUMO_STATE_LINEDETECTION:
+					val = REF_GetLineValue();
+					if(val > 500){
+						DRV_SetSpeed(0x000,0x000);
+						currentState = ZUMO_STATE_TURN;
+					}
+					break;
+				case ZUMO_STATE_TURN:
+
+					break;
+				}
 			}
-			WAIT1_WaitOSms(1);
-			break;
-		case ZUMO_STATE_TURN:
-			break;
-		}
+		WAIT1_WaitOSms(1);
 
 	}
+
 }
 
 static void ZUMO_BattleDisable(bool battleDisable){
@@ -81,10 +88,10 @@ uint8_t ZUMO_ParseCommand(const unsigned char *cmd, bool *handled, const CLS1_St
     ZUMO_PrintStatus(io);
     *handled = TRUE;
   } else if (UTIL1_strcmp((char*)cmd, (char*)"zumo battle on")==0) {
-    ZUMO_BattleDisable(TRUE);
+    ZUMO_BattleDisable(FALSE);
     *handled = TRUE;
   } else if (UTIL1_strcmp((char*)cmd, (char*)"zumo battle off")==0) {
-    ZUMO_BattleDisable(FALSE);
+    ZUMO_BattleDisable(TRUE);
     *handled = TRUE;
   }
   return res;
@@ -102,7 +109,7 @@ void ZUMO_Init(void) {
         "Zumo", /* task name for kernel awareness debugging */
         configMINIMAL_STACK_SIZE+100, /* task stack size */
         (void*)NULL, /* optional task startup argument */
-        tskIDLE_PRIORITY+2,  /* initial priority */
+        tskIDLE_PRIORITY+1,  /* initial priority */
         (xTaskHandle*)NULL /* optional task handle to create */
       ) != pdPASS) {
     /*lint -e527 */
@@ -111,3 +118,5 @@ void ZUMO_Init(void) {
   }
 #endif
 }
+
+#endif

@@ -18,6 +18,13 @@
 #ifndef APPLICATION_H_
 #define APPLICATION_H_
 
+
+/*!
+ * \brief Prints a debugging string to the shell
+ * \param str String to be printed.
+ */
+void APP_DebugPrint(unsigned char *str);
+
 void initApplication();
 void runApplication();
 void deinitApplication();
