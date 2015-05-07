@@ -33,7 +33,7 @@
 #define REF_SENSOR1_IS_LEFT   1 /* sensor number one is on the left side */
 #define REF_MIN_LINE_VAL      0x60   /* minimum value indicating a line */
 #define REF_MIN_NOISE_VAL     0x40   /* values below this are not added to the weighted sum */
-#define REF_USE_WHITE_LINE    0  /* if set to 1, then the robot is using a white (on black) line, otherwise a black (on white) line */
+#define REF_USE_WHITE_LINE    1  /* if set to 1, then the robot is using a white (on black) line, otherwise a black (on white) line */
 
 #define REF_SENSOR_TIMEOUT_US  1500  /* after this time, consider no reflection (black). Must be smaller than the timeout period of the RefCnt timer! */
 #define REF_SENSOR_TIMOUT_VAL  ((RefCnt_CNT_INP_FREQ_U_0/1000)*REF_SENSOR_TIMEOUT_US)/1000

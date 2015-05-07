@@ -51,6 +51,7 @@
 #include "Zumo.h"
 #include "Ultrasonic.h"
 #include "RNET1.h"
+#include "RNet_App.h"
 #include "Accel.h"
 
 void PL_Init(void)
@@ -110,6 +111,7 @@ void PL_Init(void)
 #endif
 #if PL_HAS_RADIO
   RNET1_Init();
+  RNETA_Init();
 #endif
 }
 

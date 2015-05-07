@@ -49,7 +49,7 @@
 	/*! Set to 1 to use Command-Shell over usb CDC*/
 #define PL_HAS_SHELL_QUEUE (1)
 	/*! Set to 1 to use Shell Queue */
-#define PL_HAS_SEMAPHORE 	(1)
+#define PL_HAS_SEMAPHORE 	(0)
 	/*! Set to 1 to use Semaphore */
 #define PL_HAS_CONFIG_NVM 	(1)
 	/*! Set when using internal FLASH to store settings */

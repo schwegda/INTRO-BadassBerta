@@ -11,8 +11,10 @@
 #include "Drive.h"
 #include "Reflectance.h"
 #include "WAIT1.h"
-
+#include "Accel.h"
 #if PL_IS_ROBO
+#include "Buzzer.h"
+
 
 typedef enum{
 	ZUMO_STATE_IDLE,
@@ -24,36 +26,75 @@ typedef enum{
 static ZUMO_STATES currentState;
 static bool battleDisabled = TRUE;
 
+static bool ZUMO_FatalCrash(void){
+	int16_t x;
+	int16_t y;
+	int16_t z;
+	bool isEnabled;
+	ACCEL_isEnabled(&isEnabled);
+	if(!isEnabled){
+		ACCEL_Enable();
+	}
+	ACCEL_GetValues(&x,&y,&z);
+	if(z <= -2000){
+		return TRUE;
+	}
+	return FALSE;
+}
+
+
+static void ZUMO_Battle_Mode(void){
+
+	if(battleDisabled || ZUMO_FatalCrash()){
+		currentState = ZUMO_STATE_IDLE;
+		battleDisabled = TRUE;
+		DRV_SetSpeed(0x00,0x00);
+	}else{
+		uint16 val;
+		switch(currentState){
+		case ZUMO_STATE_IDLE:
+			BUZ_Beep(100,500);
+			WAIT1_WaitOSms(500);
+			BUZ_Beep(200,500);
+			WAIT1_WaitOSms(500);
+			BUZ_Beep(300,500);
+			WAIT1_WaitOSms(500);
+			currentState = ZUMO_STATE_START;
+			break;
+		case ZUMO_STATE_START:
+			DRV_SetSpeed(0x2000,0x2000);
+			currentState = ZUMO_STATE_LINEDETECTION;
+			break;
+		case ZUMO_STATE_LINEDETECTION:
+			val = REF_GetLineValue();
+			if(val > 500 && val< 3000){
+				DRV_SetSpeed(-0x300,-0x300);
+				WAIT1_WaitOSms(500);
+				DRV_SetSpeed(0x300,-0x300);
+				WAIT1_WaitOSms(1000);
+				currentState = ZUMO_STATE_TURN;
+			}else if(val > 3000 && val < 6000){
+				DRV_SetSpeed(-0x300,-0x300);
+				WAIT1_WaitOSms(500);
+				DRV_SetSpeed(-0x300,0x300);
+				WAIT1_WaitOSms(1000);
+				currentState = ZUMO_STATE_TURN;
+			}
+			break;
+		case ZUMO_STATE_TURN:
+			currentState = ZUMO_STATE_START;
+			break;
+		}
+	}
+}
+
 static portTASK_FUNCTION(Zumo_Task, pvParameters) {
 	(void)pvParameters; /* parameter not used */
 
 	for(;;){
+		ZUMO_Battle_Mode();
 
-
-		if(!battleDisabled){
-				uint16 val;
-
-				switch(currentState){
-				case ZUMO_STATE_IDLE:
-					currentState = ZUMO_STATE_START;
-					break;
-				case ZUMO_STATE_START:
-					DRV_SetSpeed(0x1000,0x1000);
-					currentState = ZUMO_STATE_LINEDETECTION;
-					break;
-				case ZUMO_STATE_LINEDETECTION:
-					val = REF_GetLineValue();
-					if(val > 500){
-						DRV_SetSpeed(0x000,0x000);
-						currentState = ZUMO_STATE_TURN;
-					}
-					break;
-				case ZUMO_STATE_TURN:
-
-					break;
-				}
-			}
-		WAIT1_WaitOSms(1);
+		WAIT1_WaitOSms(2);
 
 	}
 
