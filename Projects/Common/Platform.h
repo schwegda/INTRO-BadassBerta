@@ -57,6 +57,11 @@
 
 #define PL_HAS_RADIO (1)
 
+#define PL_HAS_REMOTE         (1 && PL_HAS_RADIO)
+  /*! Set to 1 for remote controller enabled, 0 otherwise */
+#define PL_APP_ACCEL_CONTROL_SENDER  (1 && PL_HAS_REMOTE && PL_IS_FRDM)
+  /*! Set to 1 if we are the remote control sender, 0 otherwise */
+
 
 /* if keys are using interrupts or are polled */
 #if PL_IS_FRDM

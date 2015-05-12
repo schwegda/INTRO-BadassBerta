@@ -35,6 +35,7 @@
   #include "RTOSTRC1.h"
 #endif
 #include "Accel.h"
+#include "Zumo.h"
 
 /*!
  * \brief Application event handler
@@ -58,7 +59,14 @@ static void APP_HandleEvents(EVNT_Handle event)
 
 		#if PL_NOF_KEYS >= 1
 			case EVNT_SW1_PRESSED:
-				LED1_Neg();
+#if PL_IS_ROBO
+				if(ZUMO_isBattleDisabled()){
+					ZUMO_EnterBattleMode();
+				}else{
+					ZUMO_LeaveBattleMode();
+				}
+#endif
+
 				CLS1_SendStr("SW1 pressed \r\n", CLS1_GetStdio()->stdOut);
 			  break;
 
@@ -127,7 +135,6 @@ void APP_DebugPrint(unsigned char *str) {
  */
 static void APP_Task(void)
 {
-	//ACCEL_LowLevelInit();			/*to start up acceleration sensor
 	EVNT_SetEvent(EVNT_STARTUP);	/* set startup event */
 	for(;;){
 		EVNT_HandleEvent(APP_HandleEvents);

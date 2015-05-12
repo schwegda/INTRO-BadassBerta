@@ -53,6 +53,7 @@
 #include "RNET1.h"
 #include "RNet_App.h"
 #include "Accel.h"
+#include "Remote.h"
 
 void PL_Init(void)
 {
@@ -110,8 +111,11 @@ void PL_Init(void)
   US_Init();
 #endif
 #if PL_HAS_RADIO
-  RNET1_Init();
+  //RNET1_Init();
   RNETA_Init();
+#endif
+#if PL_HAS_REMOTE
+  REMOTE_Init();
 #endif
 }
 
