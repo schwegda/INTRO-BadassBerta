@@ -18,7 +18,9 @@
 
 
 #define ZUMO_ATTACK_SPEED	(0x1500)
-#define ZUMO_TURN_SPEED		(0x600)
+#define ZUMO_TURN_SPEED		(0x800)
+#define ZUMO_SEARCH_SPEED	(0x600)
+#define ZUMO_FALLOUT_SPEED	(0x1000)
 
 typedef enum{
 	ZUMO_STATE_IDLE,
@@ -67,15 +69,23 @@ static void ZUMO_Battle_Mode(void){
 			WAIT1_WaitOSms(500);
 			BUZ_Beep(300,500);
 			WAIT1_WaitOSms(500);
+			BUZ_Beep(400,500);
+			WAIT1_WaitOSms(500);
+			BUZ_Beep(100,500);
+			WAIT1_WaitOSms(1000);
+			BUZ_Beep(100,500);
+			WAIT1_WaitOSms(1000);
+			BUZ_Beep(100,500);
+			WAIT1_WaitOSms(1000);
 			currentState = ZUMO_STATE_DEF_POS;
 			break;
 		case ZUMO_STATE_DEF_POS:
-			DRV_SetSpeed(-ZUMO_TURN_SPEED,ZUMO_TURN_SPEED);
-			WAIT1_WaitOSms(500);
-			DRV_SetSpeed(ZUMO_TURN_SPEED,ZUMO_TURN_SPEED);
-			WAIT1_WaitOSms(500);
-			DRV_SetSpeed(ZUMO_TURN_SPEED,-ZUMO_TURN_SPEED);
-			WAIT1_WaitOSms(500);
+			DRV_SetSpeed(-ZUMO_FALLOUT_SPEED,ZUMO_FALLOUT_SPEED);
+			WAIT1_WaitOSms(200);
+			DRV_SetSpeed(ZUMO_FALLOUT_SPEED,ZUMO_FALLOUT_SPEED);
+			WAIT1_WaitOSms(200);
+			DRV_SetSpeed(ZUMO_FALLOUT_SPEED,-ZUMO_FALLOUT_SPEED);
+			WAIT1_WaitOSms(200);
 			currentState = ZUMO_STATE_DRIVE;
 			break;
 		case ZUMO_STATE_DRIVE:
@@ -98,14 +108,14 @@ static void ZUMO_Battle_Mode(void){
 			if(val > 500 && val< 3000){			//detect which side line was detected
 				DRV_SetSpeed(-ZUMO_TURN_SPEED,-ZUMO_TURN_SPEED);
 				WAIT1_WaitOSms(500);
-				DRV_SetSpeed(ZUMO_TURN_SPEED,-ZUMO_TURN_SPEED);
-				WAIT1_WaitOSms(1000);
+				DRV_SetSpeed(ZUMO_SEARCH_SPEED,-ZUMO_SEARCH_SPEED);
+
 				currentState = ZUMO_STATE_OPP_DETCT;
 			}else if(val > 3000 && val < 6000){
 				DRV_SetSpeed(-ZUMO_TURN_SPEED,-ZUMO_TURN_SPEED);
 				WAIT1_WaitOSms(500);
-				DRV_SetSpeed(-ZUMO_TURN_SPEED,ZUMO_TURN_SPEED);
-				WAIT1_WaitOSms(1000);
+				DRV_SetSpeed(-ZUMO_SEARCH_SPEED,ZUMO_SEARCH_SPEED);
+
 				currentState = ZUMO_STATE_OPP_DETCT;
 			}
 			break;
